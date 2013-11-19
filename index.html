@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width" />
+		<title>jQuery Touch Optimized Sliders &quot;R&quot;Us</title>
+
+		<!-- include jQuery -->
+		<script type="text/javascript" language="javascript" src="lib/jquery-1.8.2.min.js"></script>
+
+		<!-- include Tos "R"Us -->
+		<script type="text/javascript" language="javascript" src="src/js/jquery.tosrus.min.js"></script>
+		<link type="text/css" media="all" rel="stylesheet" href="src/css/jquery.tosrus.css" />
+
+		<!-- for dragging/swiping/pinching, include hammer.js -->
+		<script type="text/javascript" language="javascript" src="lib/jquery.hammer.min.js"></script>
+
+		<!-- for viewport-scale dependent buttons and captions -->
+		<script type="text/javascript" language="javascript" src="lib/FlameViewportScale.js"></script>
+
+		<style type="text/css" media="all">
+			html, body {
+				padding: 0;
+				margin: 0;
+				height: 100%;
+			}
+			body, div, p {
+				font-family: Arial, Helvetica, Verdana;
+				color: #333;
+			}
+			body {
+				background-color: #eee;
+			}
+			a, a:link, a:active, a:visited {
+				color: black;
+				text-decoration: underline;
+			}
+			a:hover {
+				color: #D6DE23;
+			}
+			hr {
+				margin: 75px -20px;
+				height: 0;
+				padding: 0;
+				border: 0;
+				border-top: 1px solid #ccc;
+			}
+			pre {
+				border-left: 5px solid #ccc;
+				width: 100%;
+				padding: 10px 0 10px 20px;
+				overflow: auto;
+			}
+
+			#wrapper {
+				background-color: #fff;
+				width: 70%;
+				min-width: 675px;
+				padding: 50px 50px 100px 50px;
+				margin: 0 auto;
+				border: 1px solid #ccc;
+				box-shadow: 0 0 5px #ccc;
+			}
+			#intro p {
+				font-size: 18px;
+				line-height: 24px;
+			}
+
+			.thumbs,
+			.gallery,
+			.links {
+				border-top: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+				background: #eee;
+				margin: 20px -50px;
+			}
+			.thumbs {
+				padding: 10px 30px 30px 50px;
+				text-align: center;
+			}
+			.thumbs:after {
+				content: " ";
+				display: block;
+				clear: both;
+			}
+			.thumbs a {
+				display: inline-block;
+				margin: 20px 20px 0 0;
+			}
+			.thumbs img,
+			.gallery img {
+				box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5 );
+			}
+
+			.gallery {
+				height: 320px;
+				padding: 20px 0;
+			}
+			.gallery.large {
+				height: 470px;
+				padding: 30px 0 0 0;
+			}
+			.gallery + .thumbs {
+				border-top: none;
+				margin-top: -40px;
+			}
+			.links {
+				padding: 30px 50px;
+			}
+			.links a {
+				line-height: 30px;
+			}
+
+			.hidden {
+				display: none;
+			}
+		</style>
+
+		<script type="text/javascript" language="javascript">
+			$(document).ready(function() {
+
+				$('#example1 a').TosRUs();
+
+				$("#gallery2").TosRUs({
+					slides: {
+						visible: 3,
+						collect: false,
+						css: {
+							padding: 10
+						}
+					}
+				});
+
+				$("#example3 a").TosRUs({
+					buttons: false,
+					keys: false,
+					wrapper: "#gallery3",
+					slides: {
+						collect: true,
+						visible: 1,
+						width: '80%',
+						offset: '10%',
+						css: {
+							padding: 10
+						}
+					}
+				});
+
+				$('#example4 a').TosRUs();
+
+			});
+		</script>
+	</head>
+	<body>
+		<div id="wrapper" style="position: relative;">
+			<div id="intro">
+				<h1>jQuery Touch Optimized Sliders &quot;R&quot;Us</h1>
+				<p>The one-stop-shop jQuery plugin for scrolling/swiping through all different kinds of content. On a desktop, tablet or smartphone, inside a HTML element or as a lightbox popup.</p>
+				<p>The plugin is responsive by default, so try resizing your browser.<br />
+					This is a demo-page, for the full documentation please visit <a href="http://tosrus.frebsite.nl">TosRUs.frebsite.nl</a></p>
+			</div>
+
+			<hr />
+
+			<div id="example1">
+				<h2>Lightbox example (default configuration)</h2>
+				<p>Clicking a thumbnail will open up a lightbox popup with a slider for the enlarged images.</p>
+				
+				<div class="thumbs">
+					<a href="img/large/skiline1.jpg" title="Skiline Shanghai, China">
+						<img src="img/square/skiline1.jpg" /></a>
+					<a href="img/large/skiline2.jpg" title="Skiline Frankfurt, Germany">
+						<img src="img/square/skiline2.jpg" /></a>
+					<a href="img/large/skiline3.jpg" title="Skiline Hong Kong, China">
+						<img src="img/square/skiline3.jpg" /></a>
+					<a href="img/large/skiline4.jpg" title="Skiline Rotterdam, Netherlands">
+						<img src="img/square/skiline4.jpg" /></a>
+				</div>
+<pre>
+// Javascript:
+$(&quot;#example1 a&quot;).TosRUs();
+</pre>
+			</div>
+
+			<hr />
+
+			<div id="example2">
+				<h2>Inline slider</h2>
+				<p>If you specify a &quot;wrapper&quot;, the popup gallery is replaced with an inline slider.</p>
+
+				<div id="gallery2" class="gallery">
+					<img src="img/portrait/skiline1.jpg" />
+					<img src="img/portrait/fireworks1.jpg" />
+					<img src="img/portrait/skiline2.jpg" />
+					<img src="img/portrait/fireworks2.jpg" />
+					<img src="img/portrait/skiline3.jpg" />
+					<img src="img/portrait/fireworks3.jpg" />
+					<img src="img/portrait/skiline4.jpg" />
+					<img src="img/portrait/fireworks4.jpg" />
+				</div>
+<pre>
+// Javascript:
+$(&quot;#gallery2&quot;).TosRUs({
+	slides: {
+		collect: false,
+		visible: 3,
+		css: {
+			padding: 10
+		}
+	}
+});
+</pre>
+			</div>
+
+			<hr />
+
+			<div id="example3">
+				<h2>Thumbnail gallery</h2>
+				<p>Now lets combine the thumbnails from the first example with the &quot;wrapper&quot;-option from the second example and create yourself an inline gallery with thumbnail navigation.</p>
+
+				<div id="gallery3" class="gallery large"></div>
+				<div class="thumbs">
+					<a href="img/large/fireworks1.jpg">
+						<img src="img/square/fireworks1.jpg" /></a>
+					<a href="img/large/fireworks2.jpg">
+						<img src="img/square/fireworks2.jpg" /></a>
+					<a href="img/large/fireworks3.jpg">
+						<img src="img/square/fireworks3.jpg" /></a>
+					<a href="img/large/fireworks4.jpg">
+						<img src="img/square/fireworks4.jpg" /></a>
+				</div>
+<pre>
+// Javascript:
+$(&quot;#example3 a&quot;).TosRUs({
+	buttons: false,
+	keys: false,
+	wrapper: &quot;#gallery3&quot;,
+	slides: {
+		collect: true
+	}
+});
+</pre>
+			</div>
+
+			<hr />
+			
+			<div id="example4">
+				<h2>Other types of content</h2>
+				<p>Besides images, you can also scroll through video's from YouTube and Vimeo and any other type of HTML.</p>
+
+				<div class="links">
+					<a href="https://www.youtube.com/watch?v=W3OQgh_h4U4">YouTube: People Are Awesome.</a><br />
+					<a href="http://vimeo.com/21419634">Vimeo: In The Land Of The Northern Lights.</a><br />
+					<a href="#hidden-content">Some hidden HTML.</a>
+				</div>
+
+				<div class="hidden">
+					<div id="hidden-content" style="max-width: 750px;">
+						<img src="img/happy_muffin.png" alt="happy_muffin" width="173" height="231" style="float: right; margin: 0 0 20px 20px;" />
+						<h3>Cupcake ipsum dolor sit amet</h3>
+						<p>Liquorice powder marzipan jujubes marzipan cotton candy. Macaroon chupa chups muffin faworki chocolate bar cheesecake dragée cake jujubes. Caramels oat cake tiramisu. Marzipan cake brownie tart. Ice cream liquorice caramels pie tiramisu marzipan icing cookie. Jelly beans tiramisu ice cream fruitcake chocolate cake cake. Soufflé oat cake wafer chocolate cake. Toffee cheesecake sugar plum croissant. Bonbon dragée macaroon macaroon gummies wypas. Applicake lemon drops lemon drops. Cake lemon drops icing carrot cake tiramisu fruitcake fruitcake jelly sugar plum. Danish toffee ice cream pastry applicake gingerbread. Oat cake candy canes powder gingerbread sugar plum cotton candy danish wypas.</p>
+						<p>Brownie wafer wafer. Soufflé marshmallow apple pie marzipan chocolate cake sweet roll lollipop pudding cheesecake. Powder cheesecake pudding jujubes lollipop powder. Dragée tootsie roll muffin jujubes bear claw fruitcake gummi bears. Cheesecake lollipop pudding gingerbread. Bear claw caramels tart candy canes ice cream candy apple pie icing bonbon. Chocolate cake applicake gingerbread bonbon carrot cake. Wypas tart chupa chups caramels pudding marzipan ice cream fruitcake. Tootsie roll gummi bears wypas carrot cake soufflé donut. Bear claw marzipan bonbon cupcake. Wafer cupcake jelly chupa chups carrot cake fruitcake. Jelly brownie chupa chups jelly fruitcake chocolate cheesecake.</p>
+					</div>
+				</div>
+<pre>
+// Javascript:
+$(&quot;#example4 a&quot;).TosRUs();
+</pre>
+			</div>
+			
+		</div>
+	</body>
+</html>
