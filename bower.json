@@ -16,6 +16,13 @@
     "drag",
     "swipe"
   ],
+  "ignore": [
+    ".jshintrc",
+    "Guardfile",
+    "index.html",
+    "*.json",
+    "README.md"
+  ],
   "dependencies": {
     "jquery": ">= 1.7.0"
   }
