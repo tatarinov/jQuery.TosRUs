@@ -1,0 +1,157 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Buttons addon
+*/
+
+
+@import '../variables';
+
+
+.tos-prev,
+.tos-next,
+.tos-close
+{
+	background: $uiBgColor;
+	border-radius: $uiBorderRadius;
+	opacity: 0;
+	display: block;
+	width: $btnSize;
+	position: absolute;
+
+	@include vendor-prefix-property( 'transition', opacity 0.4s ease );
+}
+
+.tos-prev,
+.tos-next
+{
+	height: $btnSize * 2;
+	margin-top: -$btnSize;
+	top: 50%;
+
+	&.tos-disabled
+	{
+		cursor: default;
+	}
+}
+
+.tos-prev
+{
+	left: $btnSize / 2;
+	@include vendor-prefix-property( 'transform-origin', left center );
+}
+.tos-next
+{
+	right: $btnSize / 2;
+	@include vendor-prefix-property( 'transform-origin', right center );
+}
+.tos-close
+{
+	height: $btnSize;
+	top: $btnSize / 2;
+	right: $btnSize / 2;
+	@include vendor-prefix-property( 'transform-origin', right top );
+}
+
+//	Opacity
+.tos-wrapper
+{
+	&.tos-desktop:hover,
+	&.tos-touch.tos-hover
+	{
+		.tos-prev,
+		.tos-next,
+		.tos-close
+		{
+			opacity: $uiOpacity;
+
+			&:hover
+			{
+				opacity: $uiActiveOpacity;
+			}
+			&.tos-disabled
+			{
+				opacity: $uiDisabledOpacity;
+			}
+		}
+	}
+}
+
+//	Icons
+.tos-prev span,
+.tos-next span,
+.tos-close span:before,
+.tos-close span:after
+{
+	content: '';
+	display: block;
+	width: $btnIconSize;
+	height: $btnIconSize;
+	margin: -( $btnIconStrokeWidth + 2 );
+
+	position: absolute;
+	top: 50%;
+	@include vendor-prefix-property( 'transform', rotate( 45deg ) );
+}
+.tos-close span:before,
+.tos-close span:after
+{
+	width: $btnIconSize / 2;
+	height: $btnIconSize / 2;
+	margin-top: -( $btnIconStrokeWidth + 1 );
+	margin-left: 0;
+	margin-right: 0;
+}
+.tos-prev span,
+.tos-close span:before
+{
+	border-bottom: $btnIconStrokeWidth solid $uiTextColor;
+	border-left: $btnIconStrokeWidth solid $uiTextColor;
+	left: 50%;
+}
+.tos-next span,
+.tos-close span:after
+{
+	border-top: $btnIconStrokeWidth solid $uiTextColor;
+	border-right: $btnIconStrokeWidth solid $uiTextColor;
+	right: 50%;
+}
+
+
+.tos-inline
+{
+	display: inline-block;
+	margin: 0;
+	position: relative;
+	top: auto;
+	left: auto;
+	right: auto;
+
+	&.tos-prev
+	{
+		margin-right: -( $btnSize * 1.5 );
+	}
+	&.tos-next
+	{
+		margin-left: -( $btnSize * 1.5 );
+	}
+}
+.tos-loading .tos-inline
+{
+	&.tos-prev,
+	&.tos-next
+	{
+		display: none;
+	}
+}
+
+
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit
+{
+	&.tos-has-prev .tos-slide,
+	&.tos-has-next .tos-slide,
+	&.tos-has-close .tos-slide
+	{
+		padding-left: $btnSize * 2;
+		padding-right: $btnSize * 2;
+	}
+}

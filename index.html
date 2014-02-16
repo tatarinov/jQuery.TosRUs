@@ -7,18 +7,28 @@
 		<title>jQuery Touch Optimized Sliders &quot;R&quot;Us</title>
 
 		<!-- include jQuery -->
-		<script type="text/javascript" language="javascript" src="lib/jquery-1.8.2.min.js"></script>
-
-		<!-- include Tos "R"Us -->
-		<script type="text/javascript" language="javascript" src="src/js/jquery.tosrus.min.js"></script>
-		<link type="text/css" media="all" rel="stylesheet" href="src/css/jquery.tosrus.css" />
-
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		
 		<!-- for dragging/swiping/pinching, include hammer.js -->
-		<script type="text/javascript" language="javascript" src="lib/jquery.hammer.min.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js"></script>
+		
+		<!-- include Tos "R"Us -->
+		<script type="text/javascript" language="javascript" src="src/js/jquery.tosrus.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.buttons.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.drag.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.keys.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.caption.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.pagination.js"></script>
 
-		<!-- for viewport-scale dependent buttons and captions -->
-		<script type="text/javascript" language="javascript" src="lib/FlameViewportScale.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.html.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.image.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.youtube.js"></script>
+		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.vimeo.js"></script>
+		
+		<link type="text/css" media="all" rel="stylesheet" href="src/css/jquery.tosrus.all.css" />
 
+		
+		
 		<style type="text/css" media="all">
 			html, body {
 				padding: 0;
@@ -27,17 +37,20 @@
 			}
 			body, div, p {
 				font-family: Arial, Helvetica, Verdana;
-				color: #333;
+				color: #666;
 			}
 			body {
 				background-color: #eee;
 			}
+			h1, h2, h3, h4, h5, h6 {
+				color: #333;
+			}
 			a, a:link, a:active, a:visited {
-				color: black;
+				color: #666;
 				text-decoration: underline;
 			}
 			a:hover {
-				color: #D6DE23;
+				color: #000;
 			}
 			hr {
 				margin: 75px -20px;
@@ -69,7 +82,8 @@
 
 			.thumbs,
 			.gallery,
-			.links {
+			.links,
+			.slider {
 				border-top: 1px solid #ccc;
 				border-bottom: 1px solid #ccc;
 				background: #eee;
@@ -90,20 +104,19 @@
 			}
 			.thumbs img,
 			.gallery img {
-				box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5 );
+				border: 1px solid #ccc;
+				background: #fff;
+				padding: 9px;
 			}
-
+			.thumbs a:hover img {
+				border-color: #999;
+			}
 			.gallery {
-				height: 320px;
-				padding: 20px 0;
+				height: 300px;
+				padding: 30px 0;
 			}
-			.gallery.large {
-				height: 470px;
-				padding: 30px 0 0 0;
-			}
-			.gallery + .thumbs {
-				border-top: none;
-				margin-top: -40px;
+			.slider {
+				height: 475px;
 			}
 			.links {
 				padding: 30px 50px;
@@ -118,36 +131,35 @@
 		</style>
 
 		<script type="text/javascript" language="javascript">
-			$(document).ready(function() {
+			jQuery(function( $ ) {
 
-				$('#example1 a').TosRUs();
+				$('#example-1 a').tosrus({
+					caption		: false
+				});
 
-				$("#gallery2").TosRUs({
-					slides: {
-						visible: 3,
-						collect: false,
-						css: {
-							padding: 10
-						}
+				$('#example-2 a').tosrus({
+					pagination	: true,
+					slides		: {
+						scale		: 'fill'
 					}
 				});
 
-				$("#example3 a").TosRUs({
-					buttons: false,
-					keys: false,
-					wrapper: "#gallery3",
-					slides: {
-						collect: true,
-						visible: 1,
-						width: '80%',
-						offset: '10%',
-						css: {
-							padding: 10
-						}
+				$('#example-3 a').tosrus();
+
+				$('#example-4').tosrus({
+					infinite	: true,
+					slides		: {
+						visible		: 3
 					}
 				});
 
-				$('#example4 a').TosRUs();
+				$('#example-5').tosrus({
+					buttons		: false,
+					pagination	: true,
+					slides		: {
+						scale		: 'fill'
+					}
+				});
 
 			});
 		</script>
@@ -158,123 +170,128 @@
 				<h1>jQuery Touch Optimized Sliders &quot;R&quot;Us</h1>
 				<p>The one-stop-shop jQuery plugin for scrolling/swiping through all different kinds of content. On a desktop, tablet or smartphone, inside a HTML element or as a lightbox popup.</p>
 				<p>The plugin is responsive by default, so try resizing your browser.<br />
-					This is a demo-page, for the full documentation please visit <a href="http://tosrus.frebsite.nl">TosRUs.frebsite.nl</a></p>
+					This is a demo-page, for the full documentation and more examples, please visit <a href="http://tosrus.frebsite.nl">TosRUs.frebsite.nl</a></p>
 			</div>
 
 			<hr />
 
-			<div id="example1">
-				<h2>Lightbox example (default configuration)</h2>
-				<p>Clicking a thumbnail will open up a lightbox popup with a slider for the enlarged images.</p>
-				
-				<div class="thumbs">
-					<a href="img/large/skiline1.jpg" title="Skiline Shanghai, China">
-						<img src="img/square/skiline1.jpg" /></a>
-					<a href="img/large/skiline2.jpg" title="Skiline Frankfurt, Germany">
-						<img src="img/square/skiline2.jpg" /></a>
-					<a href="img/large/skiline3.jpg" title="Skiline Hong Kong, China">
-						<img src="img/square/skiline3.jpg" /></a>
-					<a href="img/large/skiline4.jpg" title="Skiline Rotterdam, Netherlands">
-						<img src="img/square/skiline4.jpg" /></a>
+			<section>
+				<h2>Lightbox popup examples</h2>
+				<p>Fire the plugin on a (set of) thumbnail(s) and it will create a lightbox popup with a slider for the enlarged images.<br />
+					The plugin will automatically create a gallery from the targeted anchors.</p>
+				<p>This lightbox has been set up with no captions and no pagination:</p>
+				<div id="example-1" class="thumbs">
+					<a href="http://lorempixel.com/1200/675/cats/5/?img.jpg" title="adsf">
+						<img src="http://lorempixel.com/130/130/cats/5/" /></a>
+					<a href="http://lorempixel.com/1200/675/cats/6/?img.jpg">
+						<img src="http://lorempixel.com/130/130/cats/6/" /></a>
+					<a href="http://lorempixel.com/1200/675/cats/7/?img.jpg">
+						<img src="http://lorempixel.com/130/130/cats/7/" /></a>
+					<a href="http://lorempixel.com/1200/675/cats/8/?img.jpg">
+						<img src="http://lorempixel.com/130/130/cats/8/" /></a>
 				</div>
 <pre>
-// Javascript:
-$(&quot;#example1 a&quot;).TosRUs();
-</pre>
-			</div>
-
-			<hr />
-
-			<div id="example2">
-				<h2>Inline slider</h2>
-				<p>If you specify a &quot;wrapper&quot;, the popup gallery is replaced with an inline slider.</p>
-
-				<div id="gallery2" class="gallery">
-					<img src="img/portrait/skiline1.jpg" />
-					<img src="img/portrait/fireworks1.jpg" />
-					<img src="img/portrait/skiline2.jpg" />
-					<img src="img/portrait/fireworks2.jpg" />
-					<img src="img/portrait/skiline3.jpg" />
-					<img src="img/portrait/fireworks3.jpg" />
-					<img src="img/portrait/skiline4.jpg" />
-					<img src="img/portrait/fireworks4.jpg" />
-				</div>
-<pre>
-// Javascript:
-$(&quot;#gallery2&quot;).TosRUs({
-	slides: {
-		collect: false,
-		visible: 3,
-		css: {
-			padding: 10
-		}
-	}
+$(&quot;#example a&quot;).tosrus({
+   caption : false
 });
 </pre>
-			</div>
-
-			<hr />
-
-			<div id="example3">
-				<h2>Thumbnail gallery</h2>
-				<p>Now lets combine the thumbnails from the first example with the &quot;wrapper&quot;-option from the second example and create yourself an inline gallery with thumbnail navigation.</p>
-
-				<div id="gallery3" class="gallery large"></div>
-				<div class="thumbs">
-					<a href="img/large/fireworks1.jpg">
-						<img src="img/square/fireworks1.jpg" /></a>
-					<a href="img/large/fireworks2.jpg">
-						<img src="img/square/fireworks2.jpg" /></a>
-					<a href="img/large/fireworks3.jpg">
-						<img src="img/square/fireworks3.jpg" /></a>
-					<a href="img/large/fireworks4.jpg">
-						<img src="img/square/fireworks4.jpg" /></a>
+				<br />
+				<p>This lightbox has been set up so that the images fill up the entire screen and has captions and a pagination:</p>
+				<div id="example-2" class="thumbs">
+					<a href="http://lorempixel.com/1200/675/cats/1/?img.jpg" title="White cat on purple cushion.">
+						<img src="http://lorempixel.com/130/130/cats/1/" /></a>
+					<a href="http://lorempixel.com/1200/675/cats/2/?img.jpg" title="Angry, scary cat.">
+						<img src="http://lorempixel.com/130/130/cats/2/" /></a>
+					<a href="http://lorempixel.com/1200/675/cats/3/?img.jpg" title="Brown cat that looks a bit annoyed.">
+						<img src="http://lorempixel.com/130/130/cats/3/" /></a>
+					<a href="http://lorempixel.com/1200/675/cats/4/?img.jpg" title="Gray cat, chilling.">
+						<img src="http://lorempixel.com/130/130/cats/4/" /></a>
 				</div>
 <pre>
-// Javascript:
-$(&quot;#example3 a&quot;).TosRUs({
-	buttons: false,
-	keys: false,
-	wrapper: &quot;#gallery3&quot;,
-	slides: {
-		collect: true,
-		visible: 1,
-		width: '80%',
-		offset: '10%',
-		css: {
-			padding: 10
-		}
-	}
+$(&quot;#example a&quot;).tosrus({
+   pagination : true,
+   slides     : {
+      scale      : &quot;fill&quot;
+   }
 });
 </pre>
-			</div>
-
-			<hr />
-			
-			<div id="example4">
-				<h2>Other types of content</h2>
-				<p>Besides images, you can also scroll through video's from YouTube and Vimeo and any other type of HTML.</p>
-
-				<div class="links">
-					<a href="https://www.youtube.com/watch?v=W3OQgh_h4U4">YouTube: People Are Awesome.</a><br />
-					<a href="http://vimeo.com/21419634">Vimeo: In The Land Of The Northern Lights.</a><br />
+				<br />
+				<p>Besides images, you can also scroll through YouTube and Vimeo video's and any other type of HTML:</p>
+				<div id="example-3" class="links">
+					<a href="http://www.youtube.com/watch?v=INscMGmhmX4">YouTube: Grumpy cat.</a><br />
+					<a href="http://vimeo.com/37328349">Vimeo: Flying cat.</a><br />
 					<a href="#hidden-content">Some hidden HTML.</a>
 				</div>
-
 				<div class="hidden">
 					<div id="hidden-content" style="max-width: 750px;">
-						<img src="img/happy_muffin.png" alt="happy_muffin" width="173" height="231" style="float: right; margin: 0 0 20px 20px;" />
-						<h3>Cupcake ipsum dolor sit amet</h3>
-						<p>Liquorice powder marzipan jujubes marzipan cotton candy. Macaroon chupa chups muffin faworki chocolate bar cheesecake dragée cake jujubes. Caramels oat cake tiramisu. Marzipan cake brownie tart. Ice cream liquorice caramels pie tiramisu marzipan icing cookie. Jelly beans tiramisu ice cream fruitcake chocolate cake cake. Soufflé oat cake wafer chocolate cake. Toffee cheesecake sugar plum croissant. Bonbon dragée macaroon macaroon gummies wypas. Applicake lemon drops lemon drops. Cake lemon drops icing carrot cake tiramisu fruitcake fruitcake jelly sugar plum. Danish toffee ice cream pastry applicake gingerbread. Oat cake candy canes powder gingerbread sugar plum cotton candy danish wypas.</p>
-						<p>Brownie wafer wafer. Soufflé marshmallow apple pie marzipan chocolate cake sweet roll lollipop pudding cheesecake. Powder cheesecake pudding jujubes lollipop powder. Dragée tootsie roll muffin jujubes bear claw fruitcake gummi bears. Cheesecake lollipop pudding gingerbread. Bear claw caramels tart candy canes ice cream candy apple pie icing bonbon. Chocolate cake applicake gingerbread bonbon carrot cake. Wypas tart chupa chups caramels pudding marzipan ice cream fruitcake. Tootsie roll gummi bears wypas carrot cake soufflé donut. Bear claw marzipan bonbon cupcake. Wafer cupcake jelly chupa chups carrot cake fruitcake. Jelly brownie chupa chups jelly fruitcake chocolate cheesecake.</p>
+						<img src="http://lorempixel.com/200/200/cats/5/" style="float: right; margin: 0 0 20px 20px;" />
+						<h3>Kitty ipsum dolor sit amet</h3>
+						<p>Purr attack in viverra nullam, jump on the table puking chase the red dot biting run fluffy fur tempus et. Jump on the table iaculis tortor tail flick eat egestas, jump on the table zzz sleep in the sink chuf. Lay down in your way orci turpis knock over the lamp vestibulum aliquam, ac shed everywhere non judging you shed everywhere scratched. Accumsan egestas scratched puking scratched tincidunt a, purr dolor enim ut jump on the table orci turpis libero. Vel non vel amet, stretching jump litter box eat sagittis nunc non. Nunc chuf pellentesque leap et ac, tortor climb the curtains stuck in a tree sollicitudin. Sagittis nibh aliquam nunc, tortor stretching rhoncus suspendisse hiss accumsan rhoncus litter box. Consectetur jump on the table dolor suscipit suscipit hiss, iaculis biting mauris a I don't like that food.</p>
+						<p>Purr judging you nam dolor rip the couch, purr tincidunt a tristique give me fish aliquam climb the curtains pharetra. I don't like that food vel puking hairball, nam pellentesque attack consectetur suspendisse sleep in the sink feed me. Sleep on your face tortor faucibus chuf hairball, leap quis nunc sleep in the sink egestas meow. Tail flick sleep in the sink tincidunt a sunbathe enim, pellentesque scratched purr sleep on your face sagittis. Litter box hiss shed everywhere etiam, biting non aliquam egestas tincidunt a enim ut tail flick iaculis. Et mauris a aliquam run suscipit mauris a, attack stuck in a tree stuck in a tree iaculis lay down in your way sollicitudin.</p>
 					</div>
 				</div>
 <pre>
-// Javascript:
-$(&quot;#example4 a&quot;).TosRUs();
+$(&quot;#example a&quot;).tosrus();
 </pre>
-			</div>
+			</section>
+
+			<hr />
+
+			<section>
+				<h2>Inline slider examples</h2>
+				<p>Fire the plugin on a &quot;wrapper&quot; with existing content, and the popup gallery is replaced with an inline slider.<br />
+					Just like the lightbox popup, the slides in this slider are responsive by default.</p>
+				<p>This slider has been set up to show three slides and is infinite:</p>
+				<div id="example-4" class="gallery">
+					<img src="http://lorempixel.com/200/300/cats/1/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/2/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/3/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/4/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/5/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/6/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/7/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/8/?img.jpg" />
+				</div>
+<pre>
+$(&quot;#example&quot;).tosrus({
+   infinite   : true,
+   slides     : {
+      visible    : 3
+   }
+});
+</pre>
+				<br />
+				<p>This slider has been set up to so that the images fill up the wrapper. It has no buttons, only a pagination:</p>
+				<div id="example-5" class="slider">
+					<img src="http://lorempixel.com/775/475/cats/1/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/2/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/3/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/4/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/5/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/6/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/7/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/8/?img.jpg" />
+				</div>
+<pre>
+$(&quot;#example&quot;).tosrus({
+   buttons    : false,
+   pagination : true,
+   slides     : {
+      scale      : &quot;fill&quot;
+   }
+});
+</pre>
+			</section>
 			
+			<hr />
+			
+			<section>
+				<h4>About the images</h4>
+				<p>All images on this demo-page are hosted on <a href="http://lorempixel.com/" target="_blank">lorempixel.com</a>.<br />
+					Because these images are generated by a server-side script, they don't end with &quot;.jpg&quot; or something similar. To ensure the plugin would still recognise the url as an image, &quot;?img.jpg&quot; was added to the url.</p>
+				<p><strong>Why cats?</strong><br />
+					Because everybody loves cats, right?</p>
+			</section>
 		</div>
 	</body>
 </html>

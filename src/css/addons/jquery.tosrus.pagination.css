@@ -1,0 +1,52 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Pagination addon
+*/
+.tos-pagination {
+  text-align: center;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 40px;
+  padding-bottom: 20px;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease; }
+  .tos-pagination a {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px; }
+    .tos-pagination a:hover {
+      background-color: rgba(255, 255, 255, 0.5); }
+    .tos-pagination a.tos-selected {
+      background-color: rgba(255, 255, 255, 0.9); }
+    .tos-pagination a span {
+      display: none; }
+
+.tos-wrapper.tos-has-caption .tos-pagination {
+  background: rgba(0, 0, 0, 0.5);
+  height: 30px;
+  padding-top: 0;
+  padding-bottom: 0; }
+.tos-wrapper.tos-has-pagination .tos-caption {
+  padding-bottom: 10px;
+  bottom: 30px; }
+.tos-wrapper.tos-desktop:hover .tos-pagination, .tos-wrapper.tos-touch.tos-hover .tos-pagination {
+  opacity: 1; }
+
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 60px; }
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 80px; }

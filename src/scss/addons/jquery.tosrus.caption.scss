@@ -1,0 +1,54 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Caption addon
+*/
+
+
+@import '../variables';
+
+
+.tos-caption
+{
+	color: #fff;
+	font-size: 15px;
+	line-height: $btnSize / 2;
+	text-shadow: 0 1px 2px rgba( 0, 0, 0, 0.8 );
+	text-align: center;
+	opacity: 0;
+
+	width: 100%;
+	padding-left: $btnSize / 2;
+	padding-right: $btnSize / 2;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	@include background-gradient;
+	@include vendor-prefix-property( 'box-sizing', border-box );
+	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
+	
+	&.tos-disabled
+	{
+		opacity: 0 !important;
+	}
+}
+.tos-wrapper
+{
+
+	&.tos-desktop:hover,
+	&.tos-touch.tos-hover
+	{
+		.tos-caption
+		{
+			opacity: 1;
+		}
+	}
+}
+
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-caption
+{
+	.tos-slide
+	{
+		padding-bottom: $btnSize * 1.5;
+	}
+}

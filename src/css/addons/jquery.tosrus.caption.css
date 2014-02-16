@@ -1,0 +1,42 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Caption addon
+*/
+.tos-caption {
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  opacity: 0;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 40px;
+  padding-bottom: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease; }
+  .tos-caption.tos-disabled {
+    opacity: 0 !important; }
+
+.tos-wrapper.tos-desktop:hover .tos-caption, .tos-wrapper.tos-touch.tos-hover .tos-caption {
+  opacity: 1; }
+
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
+  padding-bottom: 60px; }

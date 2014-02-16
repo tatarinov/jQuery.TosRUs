@@ -1,0 +1,37 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Youtube media
+*/
+.tos-play {
+  background: black;
+  border: 5px solid white;
+  border-radius: 80px;
+  opacity: 0;
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: -65px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease; }
+  .tos-play:after {
+    content: '';
+    border: 20px solid transparent;
+    border-left-color: white;
+    border-left-width: 30px;
+    display: block;
+    margin-top: -20px;
+    margin-left: -10px;
+    position: absolute;
+    top: 50%;
+    left: 50%; }
+
+.tos-wrapper.tos-desktop:hover .tos-play, .tos-wrapper.tos-touch.tos-hover .tos-play {
+  opacity: 0.5; }
+  .tos-wrapper.tos-desktop:hover .tos-play:hover, .tos-wrapper.tos-touch.tos-hover .tos-play:hover {
+    opacity: 0.9; }

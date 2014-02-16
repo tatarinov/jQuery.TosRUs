@@ -1,7 +1,7 @@
 {
   "name": "jQuery.TosRUs",
   "main": "src/js/jquery.tosrus.js",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "homepage": "http://tosrus.frebsite.nl/",
   "authors": [
     "Fred Heusschen <info@frebsite.nl>"
