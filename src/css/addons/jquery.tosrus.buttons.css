@@ -1,0 +1,128 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Buttons addon
+*/
+.tos-prev,
+.tos-next,
+.tos-close {
+  background: black;
+  border-radius: 3px;
+  opacity: 0;
+  display: block;
+  width: 40px;
+  position: absolute;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease; }
+
+.tos-prev,
+.tos-next {
+  height: 80px;
+  margin-top: -40px;
+  top: 50%; }
+  .tos-prev.tos-disabled,
+  .tos-next.tos-disabled {
+    cursor: default; }
+
+.tos-prev {
+  left: 20px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center; }
+
+.tos-next {
+  right: 20px;
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  -o-transform-origin: right center;
+  transform-origin: right center; }
+
+.tos-close {
+  height: 40px;
+  top: 20px;
+  right: 20px;
+  -webkit-transform-origin: right top;
+  -moz-transform-origin: right top;
+  -ms-transform-origin: right top;
+  -o-transform-origin: right top;
+  transform-origin: right top; }
+
+.tos-wrapper.tos-desktop:hover .tos-prev,
+.tos-wrapper.tos-desktop:hover .tos-next,
+.tos-wrapper.tos-desktop:hover .tos-close, .tos-wrapper.tos-touch.tos-hover .tos-prev,
+.tos-wrapper.tos-touch.tos-hover .tos-next,
+.tos-wrapper.tos-touch.tos-hover .tos-close {
+  opacity: 0.5; }
+  .tos-wrapper.tos-desktop:hover .tos-prev:hover,
+  .tos-wrapper.tos-desktop:hover .tos-next:hover,
+  .tos-wrapper.tos-desktop:hover .tos-close:hover, .tos-wrapper.tos-touch.tos-hover .tos-prev:hover,
+  .tos-wrapper.tos-touch.tos-hover .tos-next:hover,
+  .tos-wrapper.tos-touch.tos-hover .tos-close:hover {
+    opacity: 0.9; }
+  .tos-wrapper.tos-desktop:hover .tos-prev.tos-disabled,
+  .tos-wrapper.tos-desktop:hover .tos-next.tos-disabled,
+  .tos-wrapper.tos-desktop:hover .tos-close.tos-disabled, .tos-wrapper.tos-touch.tos-hover .tos-prev.tos-disabled,
+  .tos-wrapper.tos-touch.tos-hover .tos-next.tos-disabled,
+  .tos-wrapper.tos-touch.tos-hover .tos-close.tos-disabled {
+    opacity: 0.2; }
+
+.tos-prev span,
+.tos-next span,
+.tos-close span:before,
+.tos-close span:after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: -5px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.tos-close span:before,
+.tos-close span:after {
+  width: 6px;
+  height: 6px;
+  margin-top: -4px;
+  margin-left: 0;
+  margin-right: 0; }
+
+.tos-prev span,
+.tos-close span:before {
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+  left: 50%; }
+
+.tos-next span,
+.tos-close span:after {
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  right: 50%; }
+
+.tos-inline {
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto; }
+  .tos-inline.tos-prev {
+    margin-right: -60px; }
+  .tos-inline.tos-next {
+    margin-left: -60px; }
+
+.tos-loading .tos-inline.tos-prev, .tos-loading .tos-inline.tos-next {
+  display: none; }
+
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-prev .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-next .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-close .tos-slide {
+  padding-left: 80px;
+  padding-right: 80px; }

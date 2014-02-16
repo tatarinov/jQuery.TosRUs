@@ -1,0 +1,17 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Drag addon
+*/
+
+
+@import '../variables';
+
+
+.tos-wrapper.tos-fx-slide .tos-slider
+{
+	@include vendor-prefix-both( 'transition-property', ( transform, margin ) );
+}
+.tos-wrapper.tos-fx-fade .tos-slider
+{
+	@include vendor-prefix-property( 'transition-property', ( opacity, margin ) );
+}

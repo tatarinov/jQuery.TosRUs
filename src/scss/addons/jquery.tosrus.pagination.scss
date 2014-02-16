@@ -1,0 +1,84 @@
+/*
+	jQuery Touch Optimized Sliders "R"Us
+	Pagination addon
+*/
+
+
+@import '../variables';
+
+
+.tos-pagination
+{
+	text-align: center;
+	opacity: 0;
+
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	
+	@include background-gradient;
+	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
+	
+	a
+	{
+		background-color: rgba( $uiTextColor, $uiDisabledOpacity );
+		border-radius: 20px;
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		margin: 0 3px;
+		
+		&:hover
+		{
+			background-color: rgba( $uiTextColor, $uiOpacity );
+		}
+		&.tos-selected
+		{
+			background-color: rgba( $uiTextColor, $uiActiveOpacity );
+		}
+
+		span
+		{
+			display: none;
+		}
+	}
+}
+
+.tos-wrapper
+{
+	&.tos-has-caption .tos-pagination
+	{
+		background: rgba( $uiBgColor, $uiBgOpacity );
+		height: 30px;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	&.tos-has-pagination .tos-caption
+	{
+		padding-bottom: 10px;
+		bottom: 30px;
+	}
+	
+	&.tos-desktop:hover,
+	&.tos-touch.tos-hover
+	{
+		.tos-pagination
+		{
+			opacity: 1;
+		}
+	}
+}
+
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination
+{
+	.tos-slide
+	{
+		padding-bottom: $btnSize * 1.5;
+	}
+	
+	&.tos-has-caption .tos-slide
+	{
+		padding-bottom: $btnSize * 2;
+	}
+}
