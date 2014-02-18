@@ -26,6 +26,8 @@
 			_f = $[ _PLUGIN_ ]._f;
 			_g = $[ _PLUGIN_ ]._g;
 
+			_e.add( 'keyup' );
+
 			_addonInitiated = true;
 		}
 

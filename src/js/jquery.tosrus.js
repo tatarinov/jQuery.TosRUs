@@ -685,14 +685,13 @@
 		);
 
 		//	Classnames
-		_c.add( 'noanimation fastanimation opened opening wrapper slider slide html loading fixed inline touch desktop hover' );
+		_c.add( 'touch desktop scale-1 scale-2 scale-3 wrapper opened opening fixed inline hover slider slide loading noanimation fastanimation' );
 
 		//	Datanames
-		_d.add( 'content slide anchor ratio maxWidth maxHeight index' );
+		_d.add( 'slide anchor' );
 
 		//	Eventnames
-		_e.add( 'open opening close closing prev next slideTo sliding click keyup scroll orientationchange load loading transitionend webkitTransitionEnd' );
-
+		_e.add( 'open opening close closing prev next slideTo sliding click pinch scroll resize orientationchange load loading transitionend webkitTransitionEnd' );
 
 		//	Functions
 		_f = {
@@ -758,10 +757,13 @@
 	        },
 	        setViewportScale: function()
 	        {
-				_g.$body.addClass( _c( 'scale-' + Math.max( Math.min( Math.round( $(document).width() / window.outerWidth ), 3 ), 1 ) ) );
+				_g.$body
+					.removeClass( _c[ 'scale-1' ] )
+					.removeClass( _c[ 'scale-2' ] )
+					.removeClass( _c[ 'scale-3' ] )
+					.addClass( _c[ 'scale-' + Math.max( Math.min( Math.round( $(document).width() / window.outerWidth ), 3 ), 1 ) ] );
 	        }
 		};
-
 
 		// Global variables
 		_g = {
@@ -769,13 +771,15 @@
 			$html	: $('html'),
 			$body	: $('body'),
 
-			scrollPosition: 0
+			scrollPosition			: 0,
+			viewportScaleInterval	: null
 		};
+
 
 		//	Touch or desktop
 		_g.$body.addClass( $[ _PLUGIN_ ].support.touch ? _c.touch : _c.desktop )
 
-		//	Prevent scroling when opened
+		//	Prevent scroling if opened
 		_g.$wndw
 			.on( _e.scroll,
 				function( e )
@@ -790,13 +794,40 @@
 				}
 			);
 
+		//	Prevent pinching if opened
+		if ( $.fn.hammer && $[ _PLUGIN_ ].support.touch )
+		{
+			_g.$body
+				.hammer()
+				.on( _e.pinch,
+					function( e )
+					{
+						if ( _g.$body.hasClass( _c.opened ) )
+						{
+							e.gesture.preventDefault();
+							e.stopPropagation();
+						}
+					}
+				);
+		}
+
 		//	Invert viewport-scale
 		_f.setViewportScale();
 		_g.$wndw
-			.on( _e.orientationchange,
+			.on( _e.orientationchange + ' ' + _e.resize,
 				function( e )
 				{
-					_f.setViewportScale();
+					if ( _g.viewportScaleInterval )
+					{
+						clearTimeout( _g.viewportScaleInterval );
+						_g.viewportScaleInterval = null;
+					}
+					_g.viewportScaleInterval = setTimeout(
+						function()
+						{
+							_f.setViewportScale();
+						}, 500
+					);
 				}
 			);
 

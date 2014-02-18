@@ -85,6 +85,8 @@
 			_f = $[ _PLUGIN_ ]._f;
 			_g = $[ _PLUGIN_ ]._g;
 
+			_d.add( 'ratio maxWidth maxHeight' );
+
 			_mediaInitiated = true;
 		}
 
