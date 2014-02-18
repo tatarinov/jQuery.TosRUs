@@ -11,6 +11,7 @@
   display: block;
   width: 40px;
   position: absolute;
+  z-index: 1;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
@@ -27,30 +28,15 @@
     cursor: default; }
 
 .tos-prev {
-  left: 20px;
-  -webkit-transform-origin: left center;
-  -moz-transform-origin: left center;
-  -ms-transform-origin: left center;
-  -o-transform-origin: left center;
-  transform-origin: left center; }
+  left: 20px; }
 
 .tos-next {
-  right: 20px;
-  -webkit-transform-origin: right center;
-  -moz-transform-origin: right center;
-  -ms-transform-origin: right center;
-  -o-transform-origin: right center;
-  transform-origin: right center; }
+  right: 20px; }
 
 .tos-close {
   height: 40px;
   top: 20px;
-  right: 20px;
-  -webkit-transform-origin: right top;
-  -moz-transform-origin: right top;
-  -ms-transform-origin: right top;
-  -o-transform-origin: right top;
-  transform-origin: right top; }
+  right: 20px; }
 
 .tos-wrapper.tos-desktop:hover .tos-prev,
 .tos-wrapper.tos-desktop:hover .tos-next,
@@ -108,7 +94,17 @@
   border-right: 3px solid white;
   right: 50%; }
 
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-prev .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-next .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-close .tos-slide {
+  padding-left: 80px;
+  padding-right: 80px; }
+
 .tos-inline {
+  opacity: 1;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
   display: inline-block;
   margin: 0;
   position: relative;
@@ -121,8 +117,44 @@
     margin-left: -60px; }
 
 .tos-loading .tos-inline.tos-prev, .tos-loading .tos-inline.tos-next {
-  display: none; }
+  opacity: 0; }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-prev .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-next .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-close .tos-slide {
-  padding-left: 80px;
-  padding-right: 80px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-next,
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2); }
+
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-next,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+  -webkit-transform: scale(3);
+  -moz-transform: scale(3);
+  -ms-transform: scale(3);
+  -o-transform: scale(3);
+  transform: scale(3); }
+
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-prev {
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-next,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-next {
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  -o-transform-origin: right center;
+  transform-origin: right center; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-close,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+  -webkit-transform-origin: right top;
+  -moz-transform-origin: right top;
+  -ms-transform-origin: right top;
+  -o-transform-origin: right top;
+  transform-origin: right top; }

@@ -7,6 +7,11 @@
 @import '../variables';
 
 
+$btnSize: 40px !default;
+$btnIconStrokeWidth: 3px !default;
+$btnIconSize: 12px !default;
+
+
 .tos-prev,
 .tos-next,
 .tos-close
@@ -17,6 +22,7 @@
 	display: block;
 	width: $btnSize;
 	position: absolute;
+	z-index: 1;
 
 	@include vendor-prefix-property( 'transition', opacity 0.4s ease );
 }
@@ -36,20 +42,17 @@
 
 .tos-prev
 {
-	left: $btnSize / 2;
-	@include vendor-prefix-property( 'transform-origin', left center );
+	left: $uiPadding;
 }
 .tos-next
 {
-	right: $btnSize / 2;
-	@include vendor-prefix-property( 'transform-origin', right center );
+	right: $uiPadding;
 }
 .tos-close
 {
 	height: $btnSize;
-	top: $btnSize / 2;
-	right: $btnSize / 2;
-	@include vendor-prefix-property( 'transform-origin', right top );
+	top: $uiPadding;
+	right: $uiPadding;
 }
 
 //	Opacity
@@ -116,9 +119,27 @@
 	right: 50%;
 }
 
+//	Padding for desktop
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit
+{
+	&.tos-has-prev,
+	&.tos-has-next,
+	&.tos-has-close
+	{
+		.tos-slide
+		{
+			padding-left: $btnSize + ( $uiPadding * 2 );
+			padding-right: $btnSize + ( $uiPadding * 2 );
+		}
+	}
+}
 
+//	Inline buttons
 .tos-inline
 {
+	opacity: 1;
+	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
+
 	display: inline-block;
 	margin: 0;
 	position: relative;
@@ -128,11 +149,11 @@
 
 	&.tos-prev
 	{
-		margin-right: -( $btnSize * 1.5 );
+		margin-right: -( $btnSize + $uiPadding );
 	}
 	&.tos-next
 	{
-		margin-left: -( $btnSize * 1.5 );
+		margin-left: -( $btnSize + $uiPadding );
 	}
 }
 .tos-loading .tos-inline
@@ -140,18 +161,51 @@
 	&.tos-prev,
 	&.tos-next
 	{
-		display: none;
+		opacity: 0;
 	}
 }
 
-
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit
+//	Scaled
+.tos-scale-2
 {
-	&.tos-has-prev .tos-slide,
-	&.tos-has-next .tos-slide,
-	&.tos-has-close .tos-slide
+	.tos-wrapper.tos-fixed.tos-touch
 	{
-		padding-left: $btnSize * 2;
-		padding-right: $btnSize * 2;
+		.tos-prev,
+		.tos-next,
+		.tos-close
+		{
+			@include vendor-prefix-property( 'transform', scale( 2 ) )
+		}
+	}
+}
+.tos-scale-3
+{
+	.tos-wrapper.tos-fixed.tos-touch
+	{
+		.tos-prev,
+		.tos-next,
+		.tos-close
+		{
+			@include vendor-prefix-property( 'transform', scale( 3 ) )
+		}
+	}
+}
+.tos-scale-2,
+.tos-scale-3
+{
+	.tos-wrapper.tos-fixed.tos-touch
+	{
+		.tos-prev
+		{
+			@include vendor-prefix-property( 'transform-origin', left center );
+		}
+		.tos-next
+		{
+			@include vendor-prefix-property( 'transform-origin', right center );
+		}
+		.tos-close
+		{
+			@include vendor-prefix-property( 'transform-origin', right top );
+		}
 	}
 }

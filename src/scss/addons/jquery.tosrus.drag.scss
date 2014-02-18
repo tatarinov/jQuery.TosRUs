@@ -7,11 +7,7 @@
 @import '../variables';
 
 
-.tos-wrapper.tos-fx-slide .tos-slider
+.tos-slider
 {
-	@include vendor-prefix-both( 'transition-property', ( transform, margin ) );
-}
-.tos-wrapper.tos-fx-fade .tos-slider
-{
-	@include vendor-prefix-property( 'transition-property', ( opacity, margin ) );
+	@include vendor-prefix-both( 'transition-property', ( transform, left ) );
 }

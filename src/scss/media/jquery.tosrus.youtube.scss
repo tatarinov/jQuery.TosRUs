@@ -6,17 +6,18 @@
 
 @import '../variables';
 
+$circleSize: 80px !default;
 
 .tos-play
 {
 	background: $uiBgColor;
 	border: 5px solid $uiTextColor;
-	border-radius: $btnSize * 2;
+	border-radius: $circleSize;
 	opacity: 0;
 	display: block;
-	width: $btnSize * 3;
-	height: $btnSize * 3;
-	margin: -( ( $btnSize * 1.5 ) + 5 );
+	width: $circleSize;
+	height: $circleSize;
+	margin: -( $circleSize / 2 );
 	position: absolute;
 	top:  50%;
 	left: 50%;
@@ -26,12 +27,12 @@
 	&:after
 	{
 		content: '';
-		border: ( $btnSize / 2 ) solid transparent;
+		border: ( $circleSize / 4 ) solid transparent;
 		border-left-color: $uiTextColor;
-		border-left-width: ( $btnSize / 2 ) + 10;
+		border-left-width: ( $circleSize / 4 ) + 10;
 		display: block;
-		margin-top: -( $btnSize / 2 );
-		margin-left: -( $btnSize / 4 );
+		margin-top: -( $circleSize / 4 );
+		margin-left: -( $circleSize / 8 );
 		position: absolute;
 		top: 50%;
 		left: 50%;

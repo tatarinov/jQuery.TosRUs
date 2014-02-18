@@ -5,29 +5,19 @@
 .tos-pagination {
   text-align: center;
   opacity: 0;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  padding-top: 40px;
-  padding-bottom: 20px;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
   -o-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease; }
+  transition: opacity 0.4s ease;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0; }
   .tos-pagination a {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 3px; }
+    display: inline-block; }
     .tos-pagination a:hover {
       background-color: rgba(255, 255, 255, 0.5); }
     .tos-pagination a.tos-selected {
@@ -35,18 +25,83 @@
     .tos-pagination a span {
       display: none; }
 
+.tos-wrapper.tos-desktop:hover .tos-pagination, .tos-wrapper.tos-touch.tos-hover .tos-pagination {
+  opacity: 1; }
+
 .tos-wrapper.tos-has-caption .tos-pagination {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); }
+
+.tos-wrapper .tos-pagination {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 40px;
+  padding-bottom: 20px; }
+  .tos-wrapper .tos-pagination a {
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px; }
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 60px; }
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 80px; }
+.tos-wrapper.tos-has-caption .tos-pagination {
   height: 30px;
   padding-top: 0;
   padding-bottom: 0; }
 .tos-wrapper.tos-has-pagination .tos-caption {
   padding-bottom: 10px;
   bottom: 30px; }
-.tos-wrapper.tos-desktop:hover .tos-pagination, .tos-wrapper.tos-touch.tos-hover .tos-pagination {
-  opacity: 1; }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-pagination {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 80px;
+  padding-bottom: 40px; }
+  .tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-pagination a {
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 120px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 160px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-has-caption .tos-pagination {
+  height: 60px;
+  padding-top: 0;
+  padding-bottom: 0; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-has-pagination .tos-caption {
+  padding-bottom: 20px;
+  bottom: 60px; }
+
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-pagination {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 120px;
   padding-bottom: 60px; }
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
-  padding-bottom: 80px; }
+  .tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-pagination a {
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    margin: 0 15px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 180px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 240px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-has-caption .tos-pagination {
+  height: 90px;
+  padding-top: 0;
+  padding-bottom: 0; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-has-pagination .tos-caption {
+  padding-bottom: 30px;
+  bottom: 90px; }

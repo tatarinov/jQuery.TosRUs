@@ -1,6 +1,10 @@
 /*	
  * jQuery Touch Optimized Sliders "R"Us
  * Youtube media
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
  * @requires tosrus 2.0.0 or later
  */
 

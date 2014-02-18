@@ -808,3 +808,93 @@
 	};
 
 })( jQuery );
+/*	
+ *	jQuery Touch Optimized Sliders "R"Us
+ *	Buttons addon
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	@requires tosrus 2.0.0 or later
+ */
+!function(e){function s(s,t){return e('<a class="'+n[s]+t+'" href="#"><span></span></a>')}function t(e,s,t,n){s.on(o.click,function(s){s.preventDefault(),e.trigger(o[t],[n])})}var n,i,o,d,p,l="tosrus",r="buttons",a=!1;e[l].prototype["_addon_"+r]=function(){a||(n=e[l]._c,i=e[l]._d,o=e[l]._e,d=e[l]._f,p=e[l]._g,n.add(" prev next close disabled"),a=!0);var u=this,h=this.opts[r];this.nodes.$prev=null,this.nodes.$next=null,this.nodes.$clse=null,"boolean"==typeof h||"string"==typeof h&&"inline"==h?h={prev:h,next:h}:(h=d.complObject(h,{}),h=e.extend(!0,{},e[l].defaults[r],h)),"undefined"==typeof h.close&&(h.close="window"==this.opts.wrapper.target),e.each({prev:"prev",next:"next",close:"clse"},function(i,d){h[i]&&("string"==typeof h[i]&&"inline"==h[i]?u.vars.fixed&&"close"!=i&&u.nodes.$slides.on(o.loading,function(){var o=s(i," "+n.inline)["prev"==i?"prependTo":"appendTo"](this);t(u.nodes.$wrpr,o,i,1),("prev"==i&&e(this).is(":first-child")||"next"==i&&e(this).is(":last-child"))&&o.addClass(n.disabled)}):("string"==typeof h[i]&&(h[i]=e(h[i])),u.nodes["$"+d]=h[i]instanceof e?h[i]:s(i,"").appendTo(u.nodes.$wrpr),t(u.nodes.$wrpr,u.nodes["$"+d],i,null)))}),this.opts.infinite||(this.updateButtons(),this.nodes.$wrpr.on(o.sliding,function(){u.updateButtons()}))},e[l].prototype.updateButtons=function(){this.nodes.$prev&&this.nodes.$prev[(this.slides.index<1?"add":"remove")+"Class"](n.disabled),this.nodes.$next&&this.nodes.$next[(this.slides.index>=this.slides.total-this.slides.visible?"add":"remove")+"Class"](n.disabled)},e[l].defaults[r]={prev:!e[l].support.touch,next:!e[l].support.touch},e[l].addons.push(r),e[l].ui.push("prev"),e[l].ui.push("next"),e[l].ui.push("close")}(jQuery);
+/*	
+ *	jQuery Touch Optimized Sliders "R"Us
+ *	Caption addon
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	@requires tosrus 2.0.0 or later
+ */
+!function(a){var t,s,n,d,i,o="tosrus",e="caption",r=!1;a[o].prototype["_addon_"+e]=function(){r||(t=a[o]._c,s=a[o]._d,n=a[o]._e,d=a[o]._f,i=a[o]._g,t.add("caption"),s.add("caption"),r=!0);var c=this,p=this.opts[e];this.nodes.$capt=null,a.isArray(p)&&this.vars.fixed&&(this.nodes.$capt=a('<div class="'+t.caption+'" />').appendTo(this.nodes.$wrpr),this.nodes.$anchors.each(function(){var t=a(this),n=t.data(s.slide);n.data(s.caption,"");for(var d=0,i=p.length;i>d;d++){var o=t.attr(p[d]);if(o&&o.length){n.data(s.caption,o);break}}}),this.nodes.$wrpr.on(n.sliding,function(){var a=c.nodes.$sldr.children().eq(c.slides.index).data(s.caption)||"";c.nodes.$capt.text(a)[a.length>0?"removeClass":"addClass"](t.disabled)}))},a[o].defaults[e]=["title","rel"],a[o].addons.push(e),a[o].ui.push("caption")}(jQuery);
+/*	
+ *	jQuery Touch Optimized Sliders "R"Us
+ *	Drag addon
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	@requires tosrus 2.0.0 or later
+ */
+!function(e){if(e.fn.hammer){var t,s,r,n,i,a="tosrus",d="drag",o=!1;e[a].prototype["_addon_"+d]=function(){o||(t=e[a]._c,s=e[a]._d,r=e[a]._e,n=e[a]._f,i=e[a]._g,r.add("dragstart dragend dragleft dragright swipeleft swiperight"),o=!0);var l=this;if(this.opts[d]&&"slide"==this.opts.effect){var f=0,g=!1,u=!1;this.nodes.$wrpr.hammer().on(r.dragstart,function(e){e.gesture.preventDefault(),l.nodes.$sldr.addClass(t.noanimation)}).on(r.dragleft+" "+r.dragright,function(e){e.stopPropagation(),e.gesture&&e.gesture.preventDefault(),f=e.gesture.deltaX,g=e.gesture.direction,u=!1,("left"==g&&l.slides.index+l.slides.visible>=l.slides.total||"right"==g&&0==l.slides.index)&&(f/=2.5),l.nodes.$sldr.css("left",Math.round(f))}).on(r.swipeleft+" "+r.swiperight,function(e){e.gesture.preventDefault(),u=!0}).on(r.dragend,function(e){if(e.gesture.preventDefault(),"left"==g||"right"==g){if(u)var s=l.slides.visible;else var i=l.nodes.$slides.first().width(),s=Math.floor((Math.abs(f)+i/2)/i);s>0&&l.nodes.$wrpr.trigger(r["left"==g?"next":"prev"],[s])}l.nodes.$sldr.removeClass(t.noanimation).addClass(t.fastanimation),n.transitionend(l.nodes.$sldr,function(){l.nodes.$sldr.removeClass(t.fastanimation)},l.conf.transitionDuration/2),l.nodes.$sldr.css("left",0),g=!1})}},e[a].defaults[d]=e[a].support.touch,e[a].addons.push(d)}}(jQuery);
+/*	
+ *	jQuery Touch Optimized Sliders "R"Us
+ *	Keys addon
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	@requires tosrus 2.0.0 or later
+ */
+!function(e){var o,t,s,n,r,a="tosrus",p="keys",c=!1;e[a].prototype["_addon_"+p]=function(){c||(o=e[a]._c,t=e[a]._d,s=e[a]._e,n=e[a]._f,r=e[a]._g,c=!0);var i=this,d=this.opts[p];"boolean"==typeof d&&d&&(d={prev:37,next:39,close:27}),e.isPlainObject(d)&&e(document).on(s.keyup,function(e){if(i.vars.opened){var o=!1;switch(e.keyCode){case d.prev:o=s.prev;break;case d.next:o=s.next;break;case d.close:o=s.close}o&&(e.preventDefault(),e.stopPropagation(),i.nodes.$wrpr.trigger(o))}})},e[a].defaults[p]=!1,e[a].addons.push(p)}(jQuery);
+/*	
+ *	jQuery Touch Optimized Sliders "R"Us
+ *	Pagination addon
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	@requires tosrus 2.0.0 or later
+ */
+!function(n){var s,e,i,t,a,o="tosrus",d="pagination",p=!1;n[o].prototype["_addon_"+d]=function(){p||(s=n[o]._c,e=n[o]._d,i=n[o]._e,t=n[o]._f,a=n[o]._g,s.add("pagination selected"),p=!0);var r=this,g=this.opts[d];this.nodes.$pagr=null,g&&("string"==typeof g&&(g=n(g)),this.nodes.$pagr=g instanceof n?g:n('<div class="'+s.pagination+'" />').appendTo(this.nodes.$wrpr),this.nodes.$slides.each(function(s){n('<a href="#"><span>'+(s+1)+"</span></a>").appendTo(r.nodes.$pagr).on(i.click,function(n){n.preventDefault(),r.nodes.$wrpr.trigger(i.slideTo,[s])})}),this.updatePagination(),this.nodes.$wrpr.on(i.sliding,function(){r.updatePagination()}))},n[o].prototype.updatePagination=function(){this.nodes.$pagr&&this.nodes.$pagr.children().removeClass(s.selected).eq(this.slides.index).addClass(s.selected)},n[o].defaults[d]=!1,n[o].addons.push(d),n[o].ui.push("pagination")}(jQuery);
+/*	
+ * jQuery Touch Optimized Sliders "R"Us
+ * HTML media
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ * @requires tosrus 2.0.0 or later
+ */
+!function(i){var n="tosrus",t="html";i[n].media[t]={filterAnchors:function(n){return"#"==n.slice(0,1)&&i(n).is("div")},initAnchors:function(t,e){t.removeClass(i[n]._c.loading),i('<div class="'+i[n]._c.html+'" />').append(i(e)).appendTo(t)},filterSlides:function(i){return i.is("div")},initSlides:function(){}}}(jQuery);
+/*	
+ * jQuery Touch Optimized Sliders "R"Us
+ * Images media
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ * @requires tosrus 2.0.0 or later
+ */
+!function(i){var n="tosrus",o="image";i[n].media[o]={filterAnchors:function(n){return i.inArray(n.toLowerCase().split(".").pop().split("?")[0],["jpg","jpe","jpeg","gif","png"])>-1},initAnchors:function(o,r){i('<img border="0" />').on(i[n]._e.load,function(r){r.stopPropagation(),o.removeClass(i[n]._c.loading)}).appendTo(o).attr("src",r)},filterSlides:function(i){return i.is("img")},initSlides:function(){}}}(jQuery);
+/*	
+ * jQuery Touch Optimized Sliders "R"Us
+ * Vimeo media
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ * @requires tosrus 2.0.0 or later
+ */
+!function(i){function t(t){function h(){var i=t.width(),o=t.height();p&&i>p&&(i=p),g&&o>g&&(o=g),u>i/o?o=i/u:i=o*u,f.width(i).height(o)}function l(i){f.length&&f[0].contentWindow.postMessage('{ "method": "'+i+'" }',"*")}c||(o=i[s]._c,n=i[s]._d,e=i[s]._e,a=i[s]._f,r=i[s]._g,c=!0);var f=t.children(),m=t.data(i[s]._d.anchor)||i(),u=m.data(n.ratio)||this.opts[d].ratio,p=m.data(n.maxWidth)||this.opts[d].maxWidth,g=m.data(n.maxHeight)||this.opts[d].maxHeight;t.removeClass(o.loading).on(e.loading,function(){h()}),this.nodes.$wrpr.on(e.sliding,function(){l("pause")}).on(e.closing,function(){l("unload")}),r.$wndw.on(e.resize,function(i){i.stopPropagation(),h()})}var o,n,e,a,r,s="tosrus",d="vimeo",c=!1;i[s].media[d]={filterAnchors:function(i){return i.toLowerCase().indexOf("vimeo.com/")>-1},initAnchors:function(o,n){n=n.split("vimeo.com/")[1].split("?")[0]+"?api=1",i('<iframe src="http://player.vimeo.com/video/'+n+'" frameborder="0" allowfullscreen />').appendTo(o),t.call(this,o)},filterSlides:function(i){return i.is("iframe")&&i.attr("src")?i.attr("src").toLowerCase().indexOf("vimeo.com/video/")>-1:!1},initSlides:function(i){t.call(this,i)}},i[s].defaults[d]={ratio:16/9,maxWidth:!1,maxHeight:!1}}(jQuery);
+/*	
+ * jQuery Touch Optimized Sliders "R"Us
+ * Youtube media
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ * @requires tosrus 2.0.0 or later
+ */
+!function(t){function i(i){function u(){var t=i.width(),o=i.height();p&&t>p&&(t=p),g&&o>g&&(o=g),m>t/o?o=t/m:t=o*m,l.width(t).height(o)}function h(t){l.length&&l[0].contentWindow.postMessage('{ "event": "command", "func": "'+t+'Video" }',"*")}d||(o=t[s]._c,n=t[s]._d,e=t[s]._e,a=t[s]._f,r=t[s]._g,d=!0);var l=i.children(),f=i.data(t[s]._d.anchor)||t(),m=f.data(n.ratio)||this.opts[c].ratio,p=f.data(n.maxWidth)||this.opts[c].maxWidth,g=f.data(n.maxHeight)||this.opts[c].maxHeight;i.removeClass(o.loading).on(e.loading,function(){u()}),this.nodes.$wrpr.on(e.sliding,function(){h("pause")}).on(e.closing,function(){h("stop")}),r.$wndw.on(e.resize,function(){u()})}var o,n,e,a,r,s="tosrus",c="youtube",d=!1;t[s].media[c]={filterAnchors:function(t){return t.toLowerCase().indexOf("youtube.com/watch?v=")>-1},initAnchors:function(o,n){var e=n;n=n.split("?v=")[1].split("&")[0],this.opts[c].imageLink?(n="http://img.youtube.com/vi/"+n+"/0.jpg",t('<a href="'+e+'" class="'+t[s]._c("play")+'" target="_blank" />').appendTo(o),t('<img border="0" />').on(t[s]._e.load,function(i){i.stopPropagation(),o.removeClass(t[s]._c.loading)}).appendTo(o).attr("src",n)):(t('<iframe src="http://www.youtube.com/embed/'+n+'" frameborder="0" allowfullscreen />').appendTo(o),i.call(this,o))},filterSlides:function(t){return t.is("iframe")&&t.attr("src")?t.attr("src").toLowerCase().indexOf("youtube.com/embed/")>-1:!1},initSlides:function(t){i.call(this,t)}},t[s].defaults[c]={ratio:16/9,maxWidth:!1,maxHeight:!1,imageLink:t[s].support.touch}}(jQuery);

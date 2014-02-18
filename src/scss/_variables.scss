@@ -5,6 +5,7 @@
 $transitionDuration: 0.4s !default;
 $transitionFunction: ease !default;
 
+$uiPadding: 20px;
 
 $uiBgColor: #000 !default;
 $uiBgOpacity: 0.5 !default;
@@ -15,16 +16,20 @@ $uiOpacity: 0.5 !default;
 $uiDisabledOpacity: 0.2 !default;
 $uiActiveOpacity: 0.9 !default;
 
-$btnSize: 40px !default;
-$btnIconStrokeWidth: 3px !default;
-$btnIconSize: 12px !default;
+$htmlBgColor: #fff;
+$htmlTextColor: #333;
+
+$captFontSize: 15px !default;
+$captLineHeight: 20px !default;
+
+$loadingSize: 30px;
 
 
-@mixin background-gradient()
+@mixin background-gradient( $scale: 1 )
 {
 	@include vendor-prefix-value( 'background-image', linear-gradient( bottom, rgba( $uiBgColor, $uiBgOpacity ) 0%, rgba( $uiBgColor, 0 ) 100% ) );
-	padding-top: $btnSize;
-	padding-bottom:  $btnSize / 2;
+	padding-top: $uiPadding * 2 * $scale;
+	padding-bottom:  $uiPadding * $scale;
 }
 
 @mixin vendor-prefix-property( $prop, $val )

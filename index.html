@@ -13,22 +13,46 @@
 		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js"></script>
 		
 		<!-- include Tos "R"Us -->
-		<script type="text/javascript" language="javascript" src="src/js/jquery.tosrus.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.buttons.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.drag.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.keys.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.caption.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/addons/jquery.tosrus.pagination.js"></script>
-
-		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.html.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.image.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.youtube.js"></script>
-		<script type="text/javascript" language="javascript" src="src/js/media/jquery.tosrus.vimeo.js"></script>
-		
+		<script type="text/javascript" language="javascript" src="src/js/jquery.tosrus.min.all.js"></script>
 		<link type="text/css" media="all" rel="stylesheet" href="src/css/jquery.tosrus.all.css" />
 
-		
-		
+		<!-- Fire the plugin onDocumentReady -->
+		<script type="text/javascript" language="javascript">
+			jQuery(function( $ ) {
+
+				$('#example-1 a').tosrus({
+					caption		: false
+				});
+
+				$('#example-2 a').tosrus({
+					pagination	: true,
+					slides		: {
+						scale		: 'fill'
+					}
+				});
+
+				$('#example-3 a').tosrus();
+
+				$('#example-4').tosrus({
+					infinite	: true,
+					slides		: {
+						visible		: 3
+					}
+				});
+
+				$('#example-5').tosrus({
+					buttons		: false,
+					pagination	: true,
+					slides		: {
+						scale		: 'fill'
+					}
+				});
+
+			});
+		</script>
+
+
+		<!-- CSS for this demo page -->
 		<style type="text/css" media="all">
 			html, body {
 				padding: 0;
@@ -102,6 +126,11 @@
 				display: inline-block;
 				margin: 20px 20px 0 0;
 			}
+			thumbs img
+			{
+				width: 130px;
+				height: 130px;
+			}
 			.thumbs img,
 			.gallery img {
 				border: 1px solid #ccc;
@@ -129,40 +158,6 @@
 				display: none;
 			}
 		</style>
-
-		<script type="text/javascript" language="javascript">
-			jQuery(function( $ ) {
-
-				$('#example-1 a').tosrus({
-					caption		: false
-				});
-
-				$('#example-2 a').tosrus({
-					pagination	: true,
-					slides		: {
-						scale		: 'fill'
-					}
-				});
-
-				$('#example-3 a').tosrus();
-
-				$('#example-4').tosrus({
-					infinite	: true,
-					slides		: {
-						visible		: 3
-					}
-				});
-
-				$('#example-5').tosrus({
-					buttons		: false,
-					pagination	: true,
-					slides		: {
-						scale		: 'fill'
-					}
-				});
-
-			});
-		</script>
 	</head>
 	<body>
 		<div id="wrapper" style="position: relative;">

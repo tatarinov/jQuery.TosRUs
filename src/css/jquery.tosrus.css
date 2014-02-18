@@ -22,18 +22,18 @@
   transition-timing-function: ease-out !important; }
 
 .tos-wrapper {
-  display: none;
   opacity: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
   -o-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease; }
+  transition: opacity 0.4s ease;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden; }
   .tos-wrapper.tos-opened {
     display: block; }
   .tos-wrapper.tos-opening {
@@ -43,15 +43,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 3000; }
+    z-index: 9000; }
   .tos-wrapper.tos-inline {
     position: relative; }
-  .tos-wrapper * {
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    -o-text-size-adjust: none;
-    text-size-adjust: none; }
 
 .tos-slider {
   white-space: nowrap;
@@ -106,9 +100,9 @@
     border-right: 5px solid black;
     border-radius: 50%;
     display: block;
-    width: 40px;
-    height: 40px;
-    margin: -20px;
+    width: 30px;
+    height: 30px;
+    margin: -15px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -179,7 +173,13 @@
 .tos-slide.tos-html > div {
   white-space: normal;
   text-align: left;
-  line-height: 1.4; }
+  line-height: 1.5; }
+  .tos-slide.tos-html > div * {
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none; }
 
 .tos-wrapper.tos-fill .tos-slide.tos-image > img {
   max-height: none;
@@ -191,13 +191,13 @@
   .tos-wrapper.tos-fixed.tos-desktop.tos-fit .tos-slide {
     padding: 20px; }
 .tos-wrapper.tos-fixed .tos-slide.tos-html > div {
-  background-color: #fff;
-  color: #333;
+  background-color: white;
+  color: #333333;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
-  padding: 30px;
+  padding: 40px;
   overflow: auto; }

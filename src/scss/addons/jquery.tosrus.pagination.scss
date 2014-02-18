@@ -7,27 +7,71 @@
 @import '../variables';
 
 
+$bulletSize: 10px !default;
+
+@mixin sizing_pagination( $scale: 1 )
+{
+	$size: ( $bulletSize * $scale );
+
+	//	Sizing
+	.tos-pagination
+	{
+		@include background-gradient( $scale );
+
+		a
+		{
+			border-radius: $size;
+			width: $size;
+			height: $size;
+			margin: 0 ( $size / 2 );
+		}
+	}
+
+	//	Padding
+	&.tos-fixed.tos-desktop.tos-fit.tos-has-pagination
+	{
+		.tos-slide
+		{
+			padding-bottom: $uiPadding * 3 * $scale;
+		}
+		
+		&.tos-has-caption .tos-slide
+		{
+			padding-bottom: ( ( $uiPadding * 3 ) + $captLineHeight ) * $scale;
+		}
+	}
+	
+	//	In combination with caption
+	&.tos-has-caption .tos-pagination
+	{
+		height: $size + ( $uiPadding * $scale );
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	&.tos-has-pagination .tos-caption
+	{
+		padding-bottom: $size;
+		bottom: $size + ( $uiPadding * $scale );
+	}
+}
+
 .tos-pagination
 {
 	text-align: center;
+	
 	opacity: 0;
+	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 
 	width: 100%;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	
-	@include background-gradient;
-	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
-	
+	z-index: 0;
+
 	a
 	{
 		background-color: rgba( $uiTextColor, $uiDisabledOpacity );
-		border-radius: 20px;
 		display: inline-block;
-		width: 10px;
-		height: 10px;
-		margin: 0 3px;
 		
 		&:hover
 		{
@@ -45,21 +89,9 @@
 	}
 }
 
+//	Opacity
 .tos-wrapper
 {
-	&.tos-has-caption .tos-pagination
-	{
-		background: rgba( $uiBgColor, $uiBgOpacity );
-		height: 30px;
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-	&.tos-has-pagination .tos-caption
-	{
-		padding-bottom: 10px;
-		bottom: 30px;
-	}
-	
 	&.tos-desktop:hover,
 	&.tos-touch.tos-hover
 	{
@@ -70,15 +102,25 @@
 	}
 }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination
+//	In combination with caption
+.tos-wrapper
 {
-	.tos-slide
+	&.tos-has-caption .tos-pagination
 	{
-		padding-bottom: $btnSize * 1.5;
+		background: rgba( $uiBgColor, $uiBgOpacity );
 	}
-	
-	&.tos-has-caption .tos-slide
-	{
-		padding-bottom: $btnSize * 2;
-	}
+}
+
+//	Sizing
+.tos-wrapper
+{
+	@include sizing_pagination;
+}
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch
+{
+	@include sizing_pagination( 2 );
+}
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch
+{
+	@include sizing_pagination( 3 );
 }

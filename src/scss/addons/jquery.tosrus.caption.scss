@@ -7,31 +7,54 @@
 @import '../variables';
 
 
+@mixin sizing_caption( $scale: 1 )
+{
+
+	//	Sizing
+	.tos-caption
+	{
+		line-height: $captLineHeight * $scale;
+		font-size: $captFontSize * $scale;
+		text-shadow: 0 ( 1px * $scale ) ( 2px * $scale ) rgba( 0, 0, 0, 0.8 );
+
+		@include background-gradient( $scale );
+	}
+	
+	//	Padding
+	&.tos-fixed.tos-desktop.tos-fit.tos-has-caption
+	{
+		.tos-slide
+		{
+			padding-bottom: ( $uiPadding + $uiPadding + $captLineHeight ) * $scale;
+		}
+	}
+}
+
 .tos-caption
 {
-	color: #fff;
-	font-size: 15px;
-	line-height: $btnSize / 2;
-	text-shadow: 0 1px 2px rgba( 0, 0, 0, 0.8 );
+	color: $uiTextColor;
 	text-align: center;
+
 	opacity: 0;
+	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 
 	width: 100%;
-	padding-left: $btnSize / 2;
-	padding-right: $btnSize / 2;
+	padding-left: $uiPadding;
+	padding-right: $uiPadding;
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	z-index: 0;
 
-	@include background-gradient;
 	@include vendor-prefix-property( 'box-sizing', border-box );
-	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 	
 	&.tos-disabled
 	{
 		opacity: 0 !important;
 	}
 }
+
+//	Opacity
 .tos-wrapper
 {
 
@@ -45,10 +68,17 @@
 	}
 }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-caption
+
+//	Sizing
+.tos-wrapper
 {
-	.tos-slide
-	{
-		padding-bottom: $btnSize * 1.5;
-	}
+	@include sizing_caption;
+}
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch
+{
+	@include sizing_caption( 2 );
+}
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch
+{
+	@include sizing_caption( 3 );
 }

@@ -20,14 +20,15 @@
 //	Wrapper
 .tos-wrapper
 {
-	display: none;
 	opacity: 0;
+	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
+
+	display: none;
 	width: 100%;
 	height: 100%;
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
-	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 
 	&.tos-opened
 	{
@@ -44,16 +45,11 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 3000;
+		z-index: 9000;
 	}
 	&.tos-inline
 	{
 		position: relative;
-	}
-
-	*
-	{
-		@include vendor-prefix-property( 'text-size-adjust', none );
 	}
 }
 
@@ -110,11 +106,11 @@
 			content: '';
 			border-right: 5px solid $uiBgColor;
 			border-radius: 50%;
-	
+
 			display: block;
-			width: $btnSize;
-			height: $btnSize;
-			margin: -( $btnSize / 2 );
+			width: $loadingSize;
+			height: $loadingSize;
+			margin: -( $loadingSize / 2 );
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -156,7 +152,12 @@
 	{
 		white-space: normal;
 		text-align: left;
-		line-height: 1.4;
+		line-height: 1.5;
+
+		*
+		{
+			@include vendor-prefix-property( 'text-size-adjust', none );
+		}
 	}
 }
 .tos-wrapper
@@ -176,18 +177,18 @@
 			
 			&.tos-fit .tos-slide
 			{
-				padding: $btnSize / 2;
+				padding: $uiPadding;
 			}
 		}
 		.tos-slide.tos-html > div
 		{
-			background-color: #fff;
-			color: #333;
-		
+			background-color: $htmlBgColor;
+			color: $htmlTextColor;
+
 			@include vendor-prefix-property( 'box-sizing', border-box );
 		
 			display: inline-block;
-			padding: 30px;
+			padding: $uiPadding * 2;
 			overflow: auto;
 		}
 	}

@@ -2,16 +2,9 @@
 	jQuery Touch Optimized Sliders "R"Us
 	Drag addon
 */
-.tos-wrapper.tos-fx-slide .tos-slider {
-  -webkit-transition-property: -webkit-transform, margin;
-  -moz-transition-property: -moz-transform, margin;
-  -ms-transition-property: -ms-transform, margin;
-  -o-transition-property: -o-transform, margin;
-  transition-property: transform, margin; }
-
-.tos-wrapper.tos-fx-fade .tos-slider {
-  -webkit-transition-property: opacity, margin;
-  -moz-transition-property: opacity, margin;
-  -ms-transition-property: opacity, margin;
-  -o-transition-property: opacity, margin;
-  transition-property: opacity, margin; }
+.tos-slider {
+  -webkit-transition-property: -webkit-transform, left;
+  -moz-transition-property: -moz-transform, left;
+  -ms-transition-property: -ms-transform, left;
+  -o-transition-property: -o-transform, left;
+  transition-property: transform, left; }

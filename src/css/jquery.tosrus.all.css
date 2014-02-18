@@ -22,18 +22,18 @@
   transition-timing-function: ease-out !important; }
 
 .tos-wrapper {
-  display: none;
   opacity: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
   -o-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease; }
+  transition: opacity 0.4s ease;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden; }
   .tos-wrapper.tos-opened {
     display: block; }
   .tos-wrapper.tos-opening {
@@ -43,15 +43,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 3000; }
+    z-index: 9000; }
   .tos-wrapper.tos-inline {
     position: relative; }
-  .tos-wrapper * {
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
-    -o-text-size-adjust: none;
-    text-size-adjust: none; }
 
 .tos-slider {
   white-space: nowrap;
@@ -106,9 +100,9 @@
     border-right: 5px solid black;
     border-radius: 50%;
     display: block;
-    width: 40px;
-    height: 40px;
-    margin: -20px;
+    width: 30px;
+    height: 30px;
+    margin: -15px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -179,7 +173,13 @@
 .tos-slide.tos-html > div {
   white-space: normal;
   text-align: left;
-  line-height: 1.4; }
+  line-height: 1.5; }
+  .tos-slide.tos-html > div * {
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none; }
 
 .tos-wrapper.tos-fill .tos-slide.tos-image > img {
   max-height: none;
@@ -191,15 +191,15 @@
   .tos-wrapper.tos-fixed.tos-desktop.tos-fit .tos-slide {
     padding: 20px; }
 .tos-wrapper.tos-fixed .tos-slide.tos-html > div {
-  background-color: #fff;
-  color: #333;
+  background-color: white;
+  color: #333333;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
-  padding: 30px;
+  padding: 40px;
   overflow: auto; }
 
 /*
@@ -215,6 +215,7 @@
   display: block;
   width: 40px;
   position: absolute;
+  z-index: 1;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
@@ -231,30 +232,15 @@
     cursor: default; }
 
 .tos-prev {
-  left: 20px;
-  -webkit-transform-origin: left center;
-  -moz-transform-origin: left center;
-  -ms-transform-origin: left center;
-  -o-transform-origin: left center;
-  transform-origin: left center; }
+  left: 20px; }
 
 .tos-next {
-  right: 20px;
-  -webkit-transform-origin: right center;
-  -moz-transform-origin: right center;
-  -ms-transform-origin: right center;
-  -o-transform-origin: right center;
-  transform-origin: right center; }
+  right: 20px; }
 
 .tos-close {
   height: 40px;
   top: 20px;
-  right: 20px;
-  -webkit-transform-origin: right top;
-  -moz-transform-origin: right top;
-  -ms-transform-origin: right top;
-  -o-transform-origin: right top;
-  transform-origin: right top; }
+  right: 20px; }
 
 .tos-wrapper.tos-desktop:hover .tos-prev,
 .tos-wrapper.tos-desktop:hover .tos-next,
@@ -312,7 +298,17 @@
   border-right: 3px solid white;
   right: 50%; }
 
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-prev .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-next .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-close .tos-slide {
+  padding-left: 80px;
+  padding-right: 80px; }
+
 .tos-inline {
+  opacity: 1;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
   display: inline-block;
   margin: 0;
   position: relative;
@@ -325,72 +321,131 @@
     margin-left: -60px; }
 
 .tos-loading .tos-inline.tos-prev, .tos-loading .tos-inline.tos-next {
-  display: none; }
+  opacity: 0; }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-prev .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-next .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-close .tos-slide {
-  padding-left: 80px;
-  padding-right: 80px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-next,
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2); }
+
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-next,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+  -webkit-transform: scale(3);
+  -moz-transform: scale(3);
+  -ms-transform: scale(3);
+  -o-transform: scale(3);
+  transform: scale(3); }
+
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-prev {
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-next,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-next {
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  -o-transform-origin: right center;
+  transform-origin: right center; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-close,
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+  -webkit-transform-origin: right top;
+  -moz-transform-origin: right top;
+  -ms-transform-origin: right top;
+  -o-transform-origin: right top;
+  transform-origin: right top; }
 
 /*
 	jQuery Touch Optimized Sliders "R"Us
 	Caption addon
 */
 .tos-caption {
-  color: #fff;
-  font-size: 15px;
-  line-height: 20px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  color: white;
   text-align: center;
   opacity: 0;
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  padding-top: 40px;
-  padding-bottom: 20px;
+  z-index: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: opacity 0.4s ease;
-  -moz-transition: opacity 0.4s ease;
-  -ms-transition: opacity 0.4s ease;
-  -o-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease; }
+  box-sizing: border-box; }
   .tos-caption.tos-disabled {
     opacity: 0 !important; }
 
 .tos-wrapper.tos-desktop:hover .tos-caption, .tos-wrapper.tos-touch.tos-hover .tos-caption {
   opacity: 1; }
 
+.tos-wrapper .tos-caption {
+  line-height: 20px;
+  font-size: 15px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 40px;
+  padding-bottom: 20px; }
 .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
   padding-bottom: 60px; }
+
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-caption {
+  line-height: 40px;
+  font-size: 30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 80px;
+  padding-bottom: 40px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
+  padding-bottom: 120px; }
+
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-caption {
+  line-height: 60px;
+  font-size: 45px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 120px;
+  padding-bottom: 60px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
+  padding-bottom: 180px; }
 
 /*
 	jQuery Touch Optimized Sliders "R"Us
 	Drag addon
 */
-.tos-wrapper.tos-fx-slide .tos-slider {
-  -webkit-transition-property: -webkit-transform, margin;
-  -moz-transition-property: -moz-transform, margin;
-  -ms-transition-property: -ms-transform, margin;
-  -o-transition-property: -o-transform, margin;
-  transition-property: transform, margin; }
-
-.tos-wrapper.tos-fx-fade .tos-slider {
-  -webkit-transition-property: opacity, margin;
-  -moz-transition-property: opacity, margin;
-  -ms-transition-property: opacity, margin;
-  -o-transition-property: opacity, margin;
-  transition-property: opacity, margin; }
+.tos-slider {
+  -webkit-transition-property: -webkit-transform, left;
+  -moz-transition-property: -moz-transform, left;
+  -ms-transition-property: -ms-transform, left;
+  -o-transition-property: -o-transform, left;
+  transition-property: transform, left; }
 
 /*
 	jQuery Touch Optimized Sliders "R"Us
@@ -399,29 +454,19 @@
 .tos-pagination {
   text-align: center;
   opacity: 0;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-  padding-top: 40px;
-  padding-bottom: 20px;
   -webkit-transition: opacity 0.4s ease;
   -moz-transition: opacity 0.4s ease;
   -ms-transition: opacity 0.4s ease;
   -o-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease; }
+  transition: opacity 0.4s ease;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0; }
   .tos-pagination a {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 3px; }
+    display: inline-block; }
     .tos-pagination a:hover {
       background-color: rgba(255, 255, 255, 0.5); }
     .tos-pagination a.tos-selected {
@@ -429,21 +474,86 @@
     .tos-pagination a span {
       display: none; }
 
+.tos-wrapper.tos-desktop:hover .tos-pagination, .tos-wrapper.tos-touch.tos-hover .tos-pagination {
+  opacity: 1; }
+
 .tos-wrapper.tos-has-caption .tos-pagination {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); }
+
+.tos-wrapper .tos-pagination {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 40px;
+  padding-bottom: 20px; }
+  .tos-wrapper .tos-pagination a {
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px; }
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 60px; }
+.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 80px; }
+.tos-wrapper.tos-has-caption .tos-pagination {
   height: 30px;
   padding-top: 0;
   padding-bottom: 0; }
 .tos-wrapper.tos-has-pagination .tos-caption {
   padding-bottom: 10px;
   bottom: 30px; }
-.tos-wrapper.tos-desktop:hover .tos-pagination, .tos-wrapper.tos-touch.tos-hover .tos-pagination {
-  opacity: 1; }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-pagination {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 80px;
+  padding-bottom: 40px; }
+  .tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-pagination a {
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 120px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 160px; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-has-caption .tos-pagination {
+  height: 60px;
+  padding-top: 0;
+  padding-bottom: 0; }
+.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-has-pagination .tos-caption {
+  padding-bottom: 20px;
+  bottom: 60px; }
+
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-pagination {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  padding-top: 120px;
   padding-bottom: 60px; }
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
-  padding-bottom: 80px; }
+  .tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-pagination a {
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    margin: 0 15px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination .tos-slide {
+  padding-bottom: 180px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-pagination.tos-has-caption .tos-slide {
+  padding-bottom: 240px; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-has-caption .tos-pagination {
+  height: 90px;
+  padding-top: 0;
+  padding-bottom: 0; }
+.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-has-pagination .tos-caption {
+  padding-bottom: 30px;
+  bottom: 90px; }
 
 /*
 	jQuery Touch Optimized Sliders "R"Us
@@ -455,9 +565,9 @@
   border-radius: 80px;
   opacity: 0;
   display: block;
-  width: 120px;
-  height: 120px;
-  margin: -65px;
+  width: 80px;
+  height: 80px;
+  margin: -40px;
   position: absolute;
   top: 50%;
   left: 50%;

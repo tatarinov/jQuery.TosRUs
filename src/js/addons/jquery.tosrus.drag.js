@@ -1,7 +1,11 @@
 /*	
- * jQuery Touch Optimized Sliders "R"Us
- * Drag addon
- * @requires tosrus 2.0.0 or later
+ *	jQuery Touch Optimized Sliders "R"Us
+ *	Drag addon
+ *
+ *	Copyright (c) Fred Heusschen
+ *	www.frebsite.nl
+ *
+ *	@requires tosrus 2.0.0 or later
  */
 
 (function( $ ) {
@@ -33,7 +37,7 @@
 
 		var that = this;
 
-		if ( this.opts[ _ADDON_ ] )
+		if ( this.opts[ _ADDON_ ] && this.opts.effect == 'slide' )
 		{
 			var _distance 	= 0,
 				_direction	= false,
@@ -67,7 +71,7 @@
 							_distance /= 2.5;
 						}
 
-						that.nodes.$sldr.css( 'marginLeft', Math.round( _distance ) );
+						that.nodes.$sldr.css( 'left', Math.round( _distance ) );
 					}
 				)
 				.on( _e.swipeleft + ' ' + _e.swiperight,
@@ -82,15 +86,12 @@
 					{
 						e.gesture.preventDefault();
 	
-						var duration = that.conf.transitionDuration / 2;
 	
 						if ( _direction == 'left' || _direction == 'right' )
 						{
-							var easing = null;
 							if ( _swiping )
 							{
 								var slides = that.slides.visible;
-								easing = 'swipeOutTos';
 							}
 							else
 							{
@@ -100,7 +101,7 @@
 	
 							if ( slides > 0 )
 							{
-								that.nodes.$wrpr.trigger( _e[ _direction == 'left' ? 'next' : 'prev' ], [ slides, duration, easing ] );
+								that.nodes.$wrpr.trigger( _e[ _direction == 'left' ? 'next' : 'prev' ], [ slides ] );
 							}
 						}
 
@@ -108,14 +109,14 @@
 							.removeClass( _c.noanimation )
 							.addClass( _c.fastanimation );
 
-						_f.transitionend( that.nodes.$wrpr,
+						_f.transitionend( that.nodes.$sldr,
 							function()
 							{
 								that.nodes.$sldr.removeClass( _c.fastanimation );
-							}, that.conf.transitionDuration
+							}, that.conf.transitionDuration / 2
 						);
 
-						that.nodes.$sldr.css( 'marginLeft', 0 );
+						that.nodes.$sldr.css( 'left', 0 );
 
 						_direction = false;
 					}
