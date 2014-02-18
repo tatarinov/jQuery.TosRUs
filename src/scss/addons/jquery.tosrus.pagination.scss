@@ -26,20 +26,6 @@ $bulletSize: 10px !default;
 			margin: 0 ( $size / 2 );
 		}
 	}
-
-	//	Padding
-	&.tos-fixed.tos-desktop.tos-fit.tos-has-pagination
-	{
-		.tos-slide
-		{
-			padding-bottom: $uiPadding * 3 * $scale;
-		}
-		
-		&.tos-has-caption .tos-slide
-		{
-			padding-bottom: ( ( $uiPadding * 3 ) + $captLineHeight ) * $scale;
-		}
-	}
 	
 	//	In combination with caption
 	&.tos-has-caption .tos-pagination
@@ -52,6 +38,18 @@ $bulletSize: 10px !default;
 	{
 		padding-bottom: $size;
 		bottom: $size + ( $uiPadding * $scale );
+	}
+}
+@mixin sizing_pagination_slide_padding( $scale: 1 )
+{
+	.tos-slide
+	{
+		padding-bottom: $uiPadding * 3 * $scale;
+	}
+	
+	&.tos-has-caption .tos-slide
+	{
+		padding-bottom: ( ( $uiPadding * 3 ) + $captLineHeight ) * $scale;
 	}
 }
 
@@ -92,8 +90,8 @@ $bulletSize: 10px !default;
 //	Opacity
 .tos-wrapper
 {
-	&.tos-desktop:hover,
-	&.tos-touch.tos-hover
+	&:hover,
+	&.tos-hover
 	{
 		.tos-pagination
 		{
@@ -116,11 +114,18 @@ $bulletSize: 10px !default;
 {
 	@include sizing_pagination;
 }
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch
+.tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-pagination
 {
-	@include sizing_pagination( 2 );
+	@include sizing_pagination_slide_padding;
 }
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch
+.tos-touch
 {
-	@include sizing_pagination( 3 );
+	&.tos-scale-2 .tos-wrapper.tos-fixed
+	{
+		@include sizing_pagination( 2 );
+	}
+	&.tos-scale-3 .tos-wrapper.tos-fixed
+	{
+		@include sizing_pagination( 3 );
+	}
 }

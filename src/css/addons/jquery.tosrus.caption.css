@@ -26,7 +26,7 @@
   .tos-caption.tos-disabled {
     opacity: 0 !important; }
 
-.tos-wrapper.tos-desktop:hover .tos-caption, .tos-wrapper.tos-touch.tos-hover .tos-caption {
+.tos-wrapper:hover .tos-caption, .tos-wrapper.tos-hover .tos-caption {
   opacity: 1; }
 
 .tos-wrapper .tos-caption {
@@ -40,10 +40,11 @@
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
   padding-top: 40px;
   padding-bottom: 20px; }
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
+
+.tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-caption .tos-slide {
   padding-bottom: 60px; }
 
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-caption {
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-caption {
   line-height: 40px;
   font-size: 30px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -54,10 +55,7 @@
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
   padding-top: 80px;
   padding-bottom: 40px; }
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
-  padding-bottom: 120px; }
-
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-caption {
+.tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-caption {
   line-height: 60px;
   font-size: 45px;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
@@ -68,5 +66,3 @@
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
   padding-top: 120px;
   padding-bottom: 60px; }
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch.tos-fixed.tos-desktop.tos-fit.tos-has-caption .tos-slide {
-  padding-bottom: 180px; }

@@ -58,8 +58,8 @@ $btnIconSize: 12px !default;
 //	Opacity
 .tos-wrapper
 {
-	&.tos-desktop:hover,
-	&.tos-touch.tos-hover
+	&:hover,
+	&.tos-hover
 	{
 		.tos-prev,
 		.tos-next,
@@ -120,7 +120,7 @@ $btnIconSize: 12px !default;
 }
 
 //	Padding for desktop
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit
+.tos-desktop .tos-wrapper.tos-fixed.tos-fit
 {
 	&.tos-has-prev,
 	&.tos-has-next,
@@ -165,47 +165,50 @@ $btnIconSize: 12px !default;
 	}
 }
 
-//	Scaled
-.tos-scale-2
+//	Sizing
+.tos-touch
 {
-	.tos-wrapper.tos-fixed.tos-touch
+	&.tos-scale-2
 	{
-		.tos-prev,
-		.tos-next,
-		.tos-close
+		.tos-wrapper.tos-fixed
 		{
-			@include vendor-prefix-property( 'transform', scale( 2 ) )
+			.tos-prev,
+			.tos-next,
+			.tos-close
+			{
+				@include vendor-prefix-property( 'transform', scale( 2 ) )
+			}
 		}
 	}
-}
-.tos-scale-3
-{
-	.tos-wrapper.tos-fixed.tos-touch
+	&.tos-scale-3
 	{
-		.tos-prev,
-		.tos-next,
-		.tos-close
+		.tos-wrapper.tos-fixed
 		{
-			@include vendor-prefix-property( 'transform', scale( 3 ) )
+			.tos-prev,
+			.tos-next,
+			.tos-close
+			{
+				@include vendor-prefix-property( 'transform', scale( 3 ) )
+			}
 		}
 	}
-}
-.tos-scale-2,
-.tos-scale-3
-{
-	.tos-wrapper.tos-fixed.tos-touch
+	&.tos-scale-2,
+	&.tos-scale-3
 	{
-		.tos-prev
+		.tos-wrapper.tos-fixed
 		{
-			@include vendor-prefix-property( 'transform-origin', left center );
-		}
-		.tos-next
-		{
-			@include vendor-prefix-property( 'transform-origin', right center );
-		}
-		.tos-close
-		{
-			@include vendor-prefix-property( 'transform-origin', right top );
+			.tos-prev
+			{
+				@include vendor-prefix-property( 'transform-origin', left center );
+			}
+			.tos-next
+			{
+				@include vendor-prefix-property( 'transform-origin', right center );
+			}
+			.tos-close
+			{
+				@include vendor-prefix-property( 'transform-origin', right top );
+			}
 		}
 	}
 }

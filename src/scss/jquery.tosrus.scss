@@ -171,15 +171,6 @@
 	}
 	&.tos-fixed
 	{
-		&.tos-desktop
-		{
-			background-color: rgba( 0, 0, 0, 0.85 );
-			
-			&.tos-fit .tos-slide
-			{
-				padding: $uiPadding;
-			}
-		}
 		.tos-slide.tos-html > div
 		{
 			background-color: $htmlBgColor;
@@ -191,5 +182,14 @@
 			padding: $uiPadding * 2;
 			overflow: auto;
 		}
+	}
+}
+.tos-desktop .tos-wrapper.tos-fixed
+{
+	background-color: rgba( 0, 0, 0, 0.85 );
+	
+	&.tos-fit .tos-slide
+	{
+		padding: $uiPadding;
 	}
 }

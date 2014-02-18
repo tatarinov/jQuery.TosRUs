@@ -65,7 +65,6 @@
 	
 			this.nodes.$wrpr
 				.addClass( this.vars.fixed ? _c.fixed : _c.inline )
-				.addClass( $[ _PLUGIN_ ].support.touch ? _c.touch : _c.desktop )
 				.addClass( _c( 'fx-' + this.opts.effect ) )
 				.addClass( _c( this.opts.slides.scale ) )
 				.addClass( this.opts.wrapper.classes );
@@ -772,6 +771,9 @@
 
 			scrollPosition: 0
 		};
+
+		//	Touch or desktop
+		_g.$body.addClass( $[ _PLUGIN_ ].support.touch ? _c.touch : _c.desktop )
 
 		//	Prevent scroling when opened
 		_g.$wndw

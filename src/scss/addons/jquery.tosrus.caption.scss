@@ -19,14 +19,12 @@
 
 		@include background-gradient( $scale );
 	}
-	
-	//	Padding
-	&.tos-fixed.tos-desktop.tos-fit.tos-has-caption
+}
+@mixin sizing_caption_slide_padding( $scale: 1 )
+{
+	.tos-slide
 	{
-		.tos-slide
-		{
-			padding-bottom: ( $uiPadding + $uiPadding + $captLineHeight ) * $scale;
-		}
+		padding-bottom: ( $uiPadding + $uiPadding + $captLineHeight ) * $scale;
 	}
 }
 
@@ -58,8 +56,8 @@
 .tos-wrapper
 {
 
-	&.tos-desktop:hover,
-	&.tos-touch.tos-hover
+	&:hover,
+	&.tos-hover
 	{
 		.tos-caption
 		{
@@ -74,11 +72,18 @@
 {
 	@include sizing_caption;
 }
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch
+.tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-caption
 {
-	@include sizing_caption( 2 );
+	@include sizing_caption_slide_padding;
 }
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch
+.tos-touch
 {
-	@include sizing_caption( 3 );
+	&.tos-scale-2 .tos-wrapper.tos-fixed
+	{
+		@include sizing_caption( 2 );
+	}
+	&.tos-scale-3 .tos-wrapper.tos-fixed
+	{
+		@include sizing_caption( 3 );
+	}
 }

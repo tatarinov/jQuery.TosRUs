@@ -38,23 +38,23 @@
   top: 20px;
   right: 20px; }
 
-.tos-wrapper.tos-desktop:hover .tos-prev,
-.tos-wrapper.tos-desktop:hover .tos-next,
-.tos-wrapper.tos-desktop:hover .tos-close, .tos-wrapper.tos-touch.tos-hover .tos-prev,
-.tos-wrapper.tos-touch.tos-hover .tos-next,
-.tos-wrapper.tos-touch.tos-hover .tos-close {
+.tos-wrapper:hover .tos-prev,
+.tos-wrapper:hover .tos-next,
+.tos-wrapper:hover .tos-close, .tos-wrapper.tos-hover .tos-prev,
+.tos-wrapper.tos-hover .tos-next,
+.tos-wrapper.tos-hover .tos-close {
   opacity: 0.5; }
-  .tos-wrapper.tos-desktop:hover .tos-prev:hover,
-  .tos-wrapper.tos-desktop:hover .tos-next:hover,
-  .tos-wrapper.tos-desktop:hover .tos-close:hover, .tos-wrapper.tos-touch.tos-hover .tos-prev:hover,
-  .tos-wrapper.tos-touch.tos-hover .tos-next:hover,
-  .tos-wrapper.tos-touch.tos-hover .tos-close:hover {
+  .tos-wrapper:hover .tos-prev:hover,
+  .tos-wrapper:hover .tos-next:hover,
+  .tos-wrapper:hover .tos-close:hover, .tos-wrapper.tos-hover .tos-prev:hover,
+  .tos-wrapper.tos-hover .tos-next:hover,
+  .tos-wrapper.tos-hover .tos-close:hover {
     opacity: 0.9; }
-  .tos-wrapper.tos-desktop:hover .tos-prev.tos-disabled,
-  .tos-wrapper.tos-desktop:hover .tos-next.tos-disabled,
-  .tos-wrapper.tos-desktop:hover .tos-close.tos-disabled, .tos-wrapper.tos-touch.tos-hover .tos-prev.tos-disabled,
-  .tos-wrapper.tos-touch.tos-hover .tos-next.tos-disabled,
-  .tos-wrapper.tos-touch.tos-hover .tos-close.tos-disabled {
+  .tos-wrapper:hover .tos-prev.tos-disabled,
+  .tos-wrapper:hover .tos-next.tos-disabled,
+  .tos-wrapper:hover .tos-close.tos-disabled, .tos-wrapper.tos-hover .tos-prev.tos-disabled,
+  .tos-wrapper.tos-hover .tos-next.tos-disabled,
+  .tos-wrapper.tos-hover .tos-close.tos-disabled {
     opacity: 0.2; }
 
 .tos-prev span,
@@ -94,7 +94,7 @@
   border-right: 3px solid white;
   right: 50%; }
 
-.tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-prev .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-next .tos-slide, .tos-wrapper.tos-fixed.tos-desktop.tos-fit.tos-has-close .tos-slide {
+.tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-prev .tos-slide, .tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-next .tos-slide, .tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-close .tos-slide {
   padding-left: 80px;
   padding-right: 80px; }
 
@@ -119,40 +119,35 @@
 .tos-loading .tos-inline.tos-prev, .tos-loading .tos-inline.tos-next {
   opacity: 0; }
 
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-next,
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-prev,
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-next,
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-close {
   -webkit-transform: scale(2);
   -moz-transform: scale(2);
   -ms-transform: scale(2);
   -o-transform: scale(2);
   transform: scale(2); }
-
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-next,
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+.tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-prev,
+.tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-next,
+.tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-close {
   -webkit-transform: scale(3);
   -moz-transform: scale(3);
   -ms-transform: scale(3);
   -o-transform: scale(3);
   transform: scale(3); }
-
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-prev,
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-prev {
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-prev, .tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-prev {
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -ms-transform-origin: left center;
   -o-transform-origin: left center;
   transform-origin: left center; }
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-next,
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-next {
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-next, .tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-next {
   -webkit-transform-origin: right center;
   -moz-transform-origin: right center;
   -ms-transform-origin: right center;
   -o-transform-origin: right center;
   transform-origin: right center; }
-.tos-scale-2 .tos-wrapper.tos-fixed.tos-touch .tos-close,
-.tos-scale-3 .tos-wrapper.tos-fixed.tos-touch .tos-close {
+.tos-touch.tos-scale-2 .tos-wrapper.tos-fixed .tos-close, .tos-touch.tos-scale-3 .tos-wrapper.tos-fixed .tos-close {
   -webkit-transform-origin: right top;
   -moz-transform-origin: right top;
   -ms-transform-origin: right top;
