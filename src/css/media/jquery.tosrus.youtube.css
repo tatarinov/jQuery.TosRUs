@@ -21,9 +21,11 @@
     top: 50%;
     left: 50%; }
 
-.tos-wrapper:hover .tos-play, .tos-wrapper.tos-hover .tos-play {
+.tos-desktop .tos-wrapper:hover .tos-play,
+.tos-touch .tos-wrapper.tos-hover .tos-play {
   opacity: 0.5; }
-  .tos-wrapper:hover .tos-play:hover, .tos-wrapper.tos-hover .tos-play:hover {
+  .tos-desktop .tos-wrapper:hover .tos-play:hover,
+  .tos-touch .tos-wrapper.tos-hover .tos-play:hover {
     opacity: 0.9; }
 
 .tos-wrapper .tos-play {

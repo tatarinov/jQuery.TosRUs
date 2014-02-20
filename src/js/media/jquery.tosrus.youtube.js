@@ -103,7 +103,7 @@
 			.on( _e.loading,
 				function( e )
 				{
-					resizeVideo();
+					_f.resizeRatio( $v, $s, maxWidth, maxHeight, ratio );
 				}
 			);
 
@@ -125,7 +125,7 @@
 			.on( _e.resize,
 				function( e )
 				{
-					resizeVideo();
+					_f.resizeRatio( $v, $s, maxWidth, maxHeight, ratio );
 				}
 			);
 

@@ -56,25 +56,22 @@ $btnIconSize: 12px !default;
 }
 
 //	Opacity
-.tos-wrapper
+.tos-desktop .tos-wrapper:hover,
+.tos-touch .tos-wrapper.tos-hover
 {
-	&:hover,
-	&.tos-hover
+	.tos-prev,
+	.tos-next,
+	.tos-close
 	{
-		.tos-prev,
-		.tos-next,
-		.tos-close
-		{
-			opacity: $uiOpacity;
+		opacity: $uiOpacity;
 
-			&:hover
-			{
-				opacity: $uiActiveOpacity;
-			}
-			&.tos-disabled
-			{
-				opacity: $uiDisabledOpacity;
-			}
+		&:hover
+		{
+			opacity: $uiActiveOpacity;
+		}
+		&.tos-disabled
+		{
+			opacity: $uiDisabledOpacity;
 		}
 	}
 }

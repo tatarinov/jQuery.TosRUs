@@ -128,6 +128,7 @@
 				function( e )
 				{
 					e.preventDefault();
+					e.stopPropagation();
 					$wrpr.trigger( _e[ dir ], [ slides ] );
 				}
 			);

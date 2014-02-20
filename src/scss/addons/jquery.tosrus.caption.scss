@@ -53,19 +53,14 @@
 }
 
 //	Opacity
-.tos-wrapper
+.tos-desktop .tos-wrapper:hover,
+.tos-touch .tos-wrapper.tos-hover
 {
-
-	&:hover,
-	&.tos-hover
+	.tos-caption
 	{
-		.tos-caption
-		{
-			opacity: 1;
-		}
+		opacity: 1;
 	}
 }
-
 
 //	Sizing
 .tos-wrapper

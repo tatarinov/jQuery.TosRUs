@@ -65,8 +65,9 @@
 }
 .tos-wrapper.tos-fx-slide .tos-slider
 {
-	@include vendor-prefix-property( 'transform', translateX( 0 ) );
-	@include vendor-prefix-both( 'transition', transform $transitionDuration $transitionFunction );
+	position: absolute;
+	left: 0;
+	@include vendor-prefix-property( 'transition', left $transitionDuration $transitionFunction );
 }
 .tos-wrapper.tos-fx-fade .tos-slider
 {

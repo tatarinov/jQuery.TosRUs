@@ -56,20 +56,16 @@ $circleSize: 80px !default;
 }
 
 //	Opacity
-
-.tos-wrapper
+.tos-desktop .tos-wrapper:hover,
+.tos-touch .tos-wrapper.tos-hover
 {
-	&:hover,
-	&.tos-hover
+	.tos-play
 	{
-		.tos-play
-		{
-			opacity: $uiOpacity;
+		opacity: $uiOpacity;
 
-			&:hover
-			{
-				opacity: $uiActiveOpacity;
-			}
+		&:hover
+		{
+			opacity: $uiActiveOpacity;
 		}
 	}
 }

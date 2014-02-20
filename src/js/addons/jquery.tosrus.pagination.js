@@ -57,6 +57,7 @@
 								function( e )
 								{
 									e.preventDefault();
+									e.stopPropagation();
 
 									that.nodes.$wrpr.trigger( _e.slideTo, [ index ] );
 								}

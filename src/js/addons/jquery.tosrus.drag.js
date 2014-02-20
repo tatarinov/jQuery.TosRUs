@@ -71,7 +71,7 @@
 							_distance /= 2.5;
 						}
 
-						that.nodes.$sldr.css( 'left', Math.round( _distance ) );
+						that.nodes.$sldr.css( 'margin-left', Math.round( _distance ) );
 					}
 				)
 				.on( _e.swipeleft + ' ' + _e.swiperight,
@@ -85,8 +85,21 @@
 					function( e )
 					{
 						e.gesture.preventDefault();
-	
-	
+
+						that.nodes.$sldr
+							.removeClass( _c.noanimation )
+							.addClass( _c.fastanimation );
+
+
+						_f.transitionend( that.nodes.$sldr,
+							function()
+							{
+								that.nodes.$sldr.removeClass( _c.fastanimation );
+							}, that.conf.transitionDuration / 2
+						);
+
+						that.nodes.$sldr.css( 'margin-left', 0 );
+
 						if ( _direction == 'left' || _direction == 'right' )
 						{
 							if ( _swiping )
@@ -104,19 +117,6 @@
 								that.nodes.$wrpr.trigger( _e[ _direction == 'left' ? 'next' : 'prev' ], [ slides ] );
 							}
 						}
-
-						that.nodes.$sldr
-							.removeClass( _c.noanimation )
-							.addClass( _c.fastanimation );
-
-						_f.transitionend( that.nodes.$sldr,
-							function()
-							{
-								that.nodes.$sldr.removeClass( _c.fastanimation );
-							}, that.conf.transitionDuration / 2
-						);
-
-						that.nodes.$sldr.css( 'left', 0 );
 
 						_direction = false;
 					}

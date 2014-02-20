@@ -25,7 +25,8 @@
     .tos-pagination a span {
       display: none; }
 
-.tos-wrapper:hover .tos-pagination, .tos-wrapper.tos-hover .tos-pagination {
+.tos-desktop .tos-wrapper:hover .tos-pagination,
+.tos-touch .tos-wrapper.tos-hover .tos-pagination {
   opacity: 1; }
 
 .tos-wrapper.tos-has-caption .tos-pagination {

@@ -26,7 +26,8 @@
   .tos-caption.tos-disabled {
     opacity: 0 !important; }
 
-.tos-wrapper:hover .tos-caption, .tos-wrapper.tos-hover .tos-caption {
+.tos-desktop .tos-wrapper:hover .tos-caption,
+.tos-touch .tos-wrapper.tos-hover .tos-caption {
   opacity: 1; }
 
 .tos-wrapper .tos-caption {

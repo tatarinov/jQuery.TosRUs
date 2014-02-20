@@ -81,7 +81,7 @@
 			.on( _e.loading,
 				function( e )
 				{
-					resizeVideo();
+					_f.resizeRatio( $v, $s, maxWidth, maxHeight, ratio );
 				}
 			);
 
@@ -103,37 +103,9 @@
 			.on( _e.resize,
 				function( e )
 				{
-					e.stopPropagation();
-					resizeVideo();
+					_f.resizeRatio( $v, $s, maxWidth, maxHeight, ratio );
 				}
 			);
-
-
-		function resizeVideo()
-		{
-			var _w = $s.width(),
-				_h = $s.height();
-	
-			if ( maxWidth && _w > maxWidth )
-			{
-				_w = maxWidth;
-			}
-			if ( maxHeight && _h > maxHeight )
-			{
-				_h = maxHeight;
-			}
-	
-			if ( _w / _h < ratio )
-			{
-				_h = _w / ratio;
-			}
-			else
-			{
-				_w = _h * ratio;
-			}
-
-			$v.width( _w ).height( _h );
-		}
 		
 		function commandVideo( fn )
 		{

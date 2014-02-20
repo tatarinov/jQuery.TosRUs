@@ -56,16 +56,13 @@
   position: relative; }
 
 .tos-wrapper.tos-fx-slide .tos-slider {
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  -moz-transition: -moz-transform 0.4s ease;
-  -ms-transition: -ms-transform 0.4s ease;
-  -o-transition: -o-transform 0.4s ease;
-  transition: transform 0.4s ease; }
+  position: absolute;
+  left: 0;
+  -webkit-transition: left 0.4s ease;
+  -moz-transition: left 0.4s ease;
+  -ms-transition: left 0.4s ease;
+  -o-transition: left 0.4s ease;
+  transition: left 0.4s ease; }
 
 .tos-wrapper.tos-fx-fade .tos-slider {
   opacity: 1;
@@ -243,23 +240,26 @@
   top: 20px;
   right: 20px; }
 
-.tos-wrapper:hover .tos-prev,
-.tos-wrapper:hover .tos-next,
-.tos-wrapper:hover .tos-close, .tos-wrapper.tos-hover .tos-prev,
-.tos-wrapper.tos-hover .tos-next,
-.tos-wrapper.tos-hover .tos-close {
+.tos-desktop .tos-wrapper:hover .tos-prev,
+.tos-desktop .tos-wrapper:hover .tos-next,
+.tos-desktop .tos-wrapper:hover .tos-close,
+.tos-touch .tos-wrapper.tos-hover .tos-prev,
+.tos-touch .tos-wrapper.tos-hover .tos-next,
+.tos-touch .tos-wrapper.tos-hover .tos-close {
   opacity: 0.5; }
-  .tos-wrapper:hover .tos-prev:hover,
-  .tos-wrapper:hover .tos-next:hover,
-  .tos-wrapper:hover .tos-close:hover, .tos-wrapper.tos-hover .tos-prev:hover,
-  .tos-wrapper.tos-hover .tos-next:hover,
-  .tos-wrapper.tos-hover .tos-close:hover {
+  .tos-desktop .tos-wrapper:hover .tos-prev:hover,
+  .tos-desktop .tos-wrapper:hover .tos-next:hover,
+  .tos-desktop .tos-wrapper:hover .tos-close:hover,
+  .tos-touch .tos-wrapper.tos-hover .tos-prev:hover,
+  .tos-touch .tos-wrapper.tos-hover .tos-next:hover,
+  .tos-touch .tos-wrapper.tos-hover .tos-close:hover {
     opacity: 0.9; }
-  .tos-wrapper:hover .tos-prev.tos-disabled,
-  .tos-wrapper:hover .tos-next.tos-disabled,
-  .tos-wrapper:hover .tos-close.tos-disabled, .tos-wrapper.tos-hover .tos-prev.tos-disabled,
-  .tos-wrapper.tos-hover .tos-next.tos-disabled,
-  .tos-wrapper.tos-hover .tos-close.tos-disabled {
+  .tos-desktop .tos-wrapper:hover .tos-prev.tos-disabled,
+  .tos-desktop .tos-wrapper:hover .tos-next.tos-disabled,
+  .tos-desktop .tos-wrapper:hover .tos-close.tos-disabled,
+  .tos-touch .tos-wrapper.tos-hover .tos-prev.tos-disabled,
+  .tos-touch .tos-wrapper.tos-hover .tos-next.tos-disabled,
+  .tos-touch .tos-wrapper.tos-hover .tos-close.tos-disabled {
     opacity: 0.2; }
 
 .tos-prev span,
@@ -387,7 +387,8 @@
   .tos-caption.tos-disabled {
     opacity: 0 !important; }
 
-.tos-wrapper:hover .tos-caption, .tos-wrapper.tos-hover .tos-caption {
+.tos-desktop .tos-wrapper:hover .tos-caption,
+.tos-touch .tos-wrapper.tos-hover .tos-caption {
   opacity: 1; }
 
 .tos-wrapper .tos-caption {
@@ -432,12 +433,12 @@
 	jQuery Touch Optimized Sliders "R"Us
 	Drag addon
 */
-.tos-slider {
-  -webkit-transition-property: -webkit-transform, left;
-  -moz-transition-property: -moz-transform, left;
-  -ms-transition-property: -ms-transform, left;
-  -o-transition-property: -o-transform, left;
-  transition-property: transform, left; }
+.tos-wrapper.tos-fx-slide .tos-slider {
+  -webkit-transition-property: left, margin;
+  -moz-transition-property: left, margin;
+  -ms-transition-property: left, margin;
+  -o-transition-property: left, margin;
+  transition-property: left, margin; }
 
 /*
 	jQuery Touch Optimized Sliders "R"Us
@@ -466,7 +467,8 @@
     .tos-pagination a span {
       display: none; }
 
-.tos-wrapper:hover .tos-pagination, .tos-wrapper.tos-hover .tos-pagination {
+.tos-desktop .tos-wrapper:hover .tos-pagination,
+.tos-touch .tos-wrapper.tos-hover .tos-pagination {
   opacity: 1; }
 
 .tos-wrapper.tos-has-caption .tos-pagination {
@@ -562,9 +564,11 @@
     top: 50%;
     left: 50%; }
 
-.tos-wrapper:hover .tos-play, .tos-wrapper.tos-hover .tos-play {
+.tos-desktop .tos-wrapper:hover .tos-play,
+.tos-touch .tos-wrapper.tos-hover .tos-play {
   opacity: 0.5; }
-  .tos-wrapper:hover .tos-play:hover, .tos-wrapper.tos-hover .tos-play:hover {
+  .tos-desktop .tos-wrapper:hover .tos-play:hover,
+  .tos-touch .tos-wrapper.tos-hover .tos-play:hover {
     opacity: 0.9; }
 
 .tos-wrapper .tos-play {

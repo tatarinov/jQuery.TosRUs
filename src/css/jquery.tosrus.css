@@ -56,16 +56,13 @@
   position: relative; }
 
 .tos-wrapper.tos-fx-slide .tos-slider {
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  -moz-transition: -moz-transform 0.4s ease;
-  -ms-transition: -ms-transform 0.4s ease;
-  -o-transition: -o-transform 0.4s ease;
-  transition: transform 0.4s ease; }
+  position: absolute;
+  left: 0;
+  -webkit-transition: left 0.4s ease;
+  -moz-transition: left 0.4s ease;
+  -ms-transition: left 0.4s ease;
+  -o-transition: left 0.4s ease;
+  transition: left 0.4s ease; }
 
 .tos-wrapper.tos-fx-fade .tos-slider {
   opacity: 1;

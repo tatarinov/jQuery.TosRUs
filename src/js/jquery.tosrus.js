@@ -58,7 +58,6 @@
 			this._complementOptions();
 			this.vars.fixed = ( this.opts.wrapper.target == 'window' );
 
-
 			//	Add markup
 			this.nodes.$wrpr = $('<div class="' + _c.wrapper + '" />');
 			this.nodes.$sldr = $('<div class="' + _c.slider + '" />').appendTo( this.nodes.$wrpr );
@@ -68,7 +67,6 @@
 				.addClass( _c( 'fx-' + this.opts.effect ) )
 				.addClass( _c( this.opts.slides.scale ) )
 				.addClass( this.opts.wrapper.classes );
-
 
 			//	Bind events
 			this.nodes.$wrpr
@@ -90,6 +88,14 @@
 					}
 				)
 
+				//	Callback events
+				.on( _e.opening + ' ' + _e.closing + ' ' + _e.sliding + ' ' + _e.loading,
+					function( e )
+					{
+						e.stopPropagation();
+					}
+				)
+
 				//	Toggle UI
 				.on( _e.click,
 					function( e )
@@ -99,11 +105,26 @@
 					}
 				);
 
+			//	Prevent pinching if opened
+			if ( $.fn.hammer && $[ _PLUGIN_ ].support.touch )
+			{
+				this.nodes.$wrpr
+					.hammer()
+					.on( _e.pinch,
+						function( e )
+						{
+							if ( _g.$body.hasClass( _c.opened ) )
+							{
+								e.gesture.preventDefault();
+								e.stopPropagation();
+							}
+						}
+					);
+			}
 
 			//	Nodes
 			this.nodes.$anchors = this._initAnchors();
 			this.nodes.$slides  = this._initSlides();
-
 
 			//	Slides
 			this.slides.total	= this.nodes.$slides.length;
@@ -165,6 +186,7 @@
 				{
 					_g.scrollPosition = _g.$wndw.scrollTop();
 					_g.$body.addClass( _c.opened );
+					_f.setViewportScale();
 				}
 
 				if ( direct )
@@ -629,14 +651,7 @@
 	$[ _PLUGIN_ ].effects	= {
 		'slide': function( left )
 		{
-			var left = 'translateX(' + left + ')';
-			this.nodes.$sldr.css({
-				'-webkit-transform'	: left,
-				'-moz-transform'	: left,
-				'-ms-transform'		: left,
-				'-o-transform'		: left,
-				'transform'			: left
-			});
+			this.nodes.$sldr.css( 'left', left );
 		},
 		'fade': function( left )
 		{
@@ -739,6 +754,30 @@
 			{
 				return parseInt( value.slice( 0, -1 ) );
 			},
+			resizeRatio: function( $i, $o, maxWidth, maxHeight, ratio )
+			{		
+				var _w = $o.width(),
+					_h = $o.height();
+		
+				if ( maxWidth && _w > maxWidth )
+				{
+					_w = maxWidth;
+				}
+				if ( maxHeight && _h > maxHeight )
+				{
+					_h = maxHeight;
+				}
+		
+				if ( _w / _h < ratio )
+				{
+					_h = _w / ratio;
+				}
+				else
+				{
+					_w = _h * ratio;
+				}
+				$i.width( _w ).height( _h );
+			},
 			transitionend: function( $e, fn, duration )
 	        {
 				var _ended = false,
@@ -757,11 +796,19 @@
 	        },
 	        setViewportScale: function()
 	        {
-				_g.$body
-					.removeClass( _c[ 'scale-1' ] )
-					.removeClass( _c[ 'scale-2' ] )
-					.removeClass( _c[ 'scale-3' ] )
-					.addClass( _c[ 'scale-' + Math.max( Math.min( Math.round( $(document).width() / window.outerWidth ), 3 ), 1 ) ] );
+	        	if ( _g.viewportScale )
+				{
+					var scale = _g.viewportScale.getScale();
+					if ( typeof scale != 'undefined' )
+					{
+						scale = 1 / scale;
+						_g.$body
+							.removeClass( _c[ 'scale-1' ] )
+							.removeClass( _c[ 'scale-2' ] )
+							.removeClass( _c[ 'scale-3' ] )
+							.addClass( _c[ 'scale-' + Math.max( Math.min( Math.round( scale ), 3 ), 1 ) ] );
+					}
+				}
 	        }
 		};
 
@@ -772,6 +819,7 @@
 			$body	: $('body'),
 
 			scrollPosition			: 0,
+			viewportScale			: null,
 			viewportScaleInterval	: null
 		};
 
@@ -794,42 +842,29 @@
 				}
 			);
 
-		//	Prevent pinching if opened
-		if ( $.fn.hammer && $[ _PLUGIN_ ].support.touch )
+		//	Invert viewport-scale
+		if ( !_g.viewportScale && $[ _PLUGIN_ ].support.touch && typeof FlameViewportScale != 'undefined' )
 		{
-			_g.$body
-				.hammer()
-				.on( _e.pinch,
+			_g.viewportScale = new FlameViewportScale();
+			_f.setViewportScale();
+			_g.$wndw
+				.on( _e.orientationchange + ' ' + _e.resize,
 					function( e )
 					{
-						if ( _g.$body.hasClass( _c.opened ) )
+						if ( _g.viewportScaleInterval )
 						{
-							e.gesture.preventDefault();
-							e.stopPropagation();
+							clearTimeout( _g.viewportScaleInterval );
+							_g.viewportScaleInterval = null;
 						}
+						_g.viewportScaleInterval = setTimeout(
+							function()
+							{
+								_f.setViewportScale();
+							}, 500
+						);
 					}
 				);
 		}
-
-		//	Invert viewport-scale
-		_f.setViewportScale();
-		_g.$wndw
-			.on( _e.orientationchange + ' ' + _e.resize,
-				function( e )
-				{
-					if ( _g.viewportScaleInterval )
-					{
-						clearTimeout( _g.viewportScaleInterval );
-						_g.viewportScaleInterval = null;
-					}
-					_g.viewportScaleInterval = setTimeout(
-						function()
-						{
-							_f.setViewportScale();
-						}, 500
-					);
-				}
-			);
 
 
 		//	Add to plugin

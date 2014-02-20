@@ -88,15 +88,12 @@ $bulletSize: 10px !default;
 }
 
 //	Opacity
-.tos-wrapper
+.tos-desktop .tos-wrapper:hover,
+.tos-touch .tos-wrapper.tos-hover
 {
-	&:hover,
-	&.tos-hover
+	.tos-pagination
 	{
-		.tos-pagination
-		{
-			opacity: 1;
-		}
+		opacity: 1;
 	}
 }
 
