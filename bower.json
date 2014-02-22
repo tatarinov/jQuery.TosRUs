@@ -1,6 +1,6 @@
 {
   "name": "jQuery.TosRUs",
-  "main": "src/js/jquery.tosrus.js",
+  "main": "src/js/jquery.tosrus.min.all.js",
   "version": "2.0.0",
   "homepage": "http://tosrus.frebsite.nl/",
   "authors": [
