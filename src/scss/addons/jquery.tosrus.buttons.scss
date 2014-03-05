@@ -134,7 +134,7 @@ $btnIconSize: 12px !default;
 //	Inline buttons
 .tos-inline
 {
-	opacity: 1;
+	opacity: 0;
 	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 
 	display: inline-block;
@@ -155,11 +155,7 @@ $btnIconSize: 12px !default;
 }
 .tos-loading .tos-inline
 {
-	&.tos-prev,
-	&.tos-next
-	{
-		opacity: 0;
-	}
+	opacity: 0 !important;
 }
 
 //	Sizing
