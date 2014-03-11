@@ -25,13 +25,6 @@ $captLineHeight: 20px !default;
 $loadingSize: 30px;
 
 
-@mixin background-gradient( $scale: 1 )
-{
-	@include vendor-prefix-value( 'background-image', linear-gradient( bottom, rgba( $uiBgColor, $uiBgOpacity ) 0%, rgba( $uiBgColor, 0 ) 100% ) );
-	padding-top: $uiPadding * 2 * $scale;
-	padding-bottom:  $uiPadding * $scale;
-}
-
 @mixin vendor-prefix-property( $prop, $val )
 {
 	-webkit-#{$prop}: $val;

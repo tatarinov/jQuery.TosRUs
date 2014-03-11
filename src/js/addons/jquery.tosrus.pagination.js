@@ -4,8 +4,6 @@
  *
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
- *
- *	@requires tosrus 2.0.0 or later
  */
 
  (function( $ ) {
@@ -26,7 +24,7 @@
 			_f = $[ _PLUGIN_ ]._f;
 			_g = $[ _PLUGIN_ ]._g;
 
-			_c.add( 'pagination selected' );
+			_c.add( 'pagination selected uibg bullets thumbnails' );
 
 			_addonInitiated = true;
 		}
@@ -34,24 +32,69 @@
 		var that = this,
 			pagr = this.opts[ _ADDON_ ];
 
-		this.nodes.$pagr = null;
 
-		if ( pagr )
+		//	DEPRECATED
+		if ( typeof pagr == 'boolean' )
 		{
-			if ( typeof pagr == 'string' )
+			$[ _PLUGIN_ ].deprecated( 'A boolean for the option "pagination"', 'the option "pagination.add"' );
+		}
+		if ( typeof pagr == 'string' )
+		{
+			$[ _PLUGIN_ ].deprecated( 'A string for the option "pagination"', 'the option "pagination.target"' );
+		}
+		if ( pagr instanceof $ )
+		{
+			$[ _PLUGIN_ ].deprecated( 'A jQuery object for the option "pagination"', 'the option "pagination.target"' );
+		}
+		//	/DEPRECATED
+
+
+		pagr = _f.complObject( pagr, {} );
+
+		if ( pagr.add )
+		{
+			if ( typeof pagr.target == 'string' )
 			{
-				pagr = $(pagr);
+				pagr.target = $(pagr.target);
 			}
-			this.nodes.$pagr = ( pagr instanceof $ )
-				? pagr
-				: $('<div class="' + _c.pagination + '" />')
-					.appendTo( this.nodes.$wrpr );
+			if ( pagr.target instanceof $ )
+			{
+				this.nodes.$pagr = pagr.target;
+			}
+			else
+			{
+				this.nodes.$pagr = $('<div class="' + _c.pagination + ' ' + _c[ pagr.type ] + '" />').appendTo( this.nodes.$wrpr );
+				if ( !this.nodes.$uibg )
+				{
+					this.nodes.$uibg = $('<div class="' + _c.uibg + '" />').prependTo( this.nodes.$wrpr );
+				}
+			}
+
+			if ( typeof pagr.anchorBuilder != 'function' )
+			{
+				switch( pagr.type )
+				{
+					case 'thumbnails':
+						pagr.anchorBuilder = function( index )
+						{
+							return '<a href="#" style="background-image: url(' + $(this).data( _d.anchor ).attr( 'href' ) + ')"></a>';
+						};
+						break;
+					case 'bullets':
+					default:
+						pagr.anchorBuilder = function( index )
+						{
+							return '<a href="#"></a>';
+						};
+						break;
+				}
+			}
 
 			this.nodes.$slides
 				.each(
 					function( index )
 					{
-						$('<a href="#"><span>' + ( index + 1 ) + '</span></a>')
+						$(pagr.anchorBuilder.call( this, index + 1 ) )
 							.appendTo( that.nodes.$pagr )
 							.on( _e.click,
 								function( e )
@@ -89,11 +132,18 @@
 	};
 
 	//	Defaults
-	$[ _PLUGIN_ ].defaults[ _ADDON_ ] = false;
+	$[ _PLUGIN_ ].defaults[ _ADDON_ ] = {
+		add				: false,
+		type			: 'bullets',
+		target			: null,
+		anchorBuilder	: null
+	};
 
 	//	Add to plugin
 	$[ _PLUGIN_ ].addons.push( _ADDON_ );
 	$[ _PLUGIN_ ].ui.push( 'pagination' );
+	$[ _PLUGIN_ ].ui.push( 'bullets' );
+	$[ _PLUGIN_ ].ui.push( 'thumbnails' );
 
 
 })( jQuery );

@@ -8,49 +8,102 @@
 
 
 $bulletSize: 10px !default;
+$bulletMargin: $bulletSize / 2;
+
+$thumbnailSize: 50px !default;
+$thumbnailMargin: $thumbnailSize / 10;
+
 
 @mixin sizing_pagination( $scale: 1 )
 {
-	$size: ( $bulletSize * $scale );
+	$bSize: ( $bulletSize * $scale );
+	$bMargin: ( $bulletMargin * $scale );
+
+	$tSize: ( $thumbnailSize * $scale );
+	$tMargin: ( $thumbnailMargin * $scale );
+	
+	$padding: $uiPadding * $scale;
 
 	//	Sizing
 	.tos-pagination
 	{
-		@include background-gradient( $scale );
+		padding: 0 0 $padding 0;
+	}
 
-		a
+	&.tos-has-bullets
+	{
+		.tos-pagination
 		{
-			border-radius: $size;
-			width: $size;
-			height: $size;
-			margin: 0 ( $size / 2 );
+			height: $bSize;
+			a
+			{
+				border-radius: $bSize;
+				width: $bSize;
+				height: $bSize;
+				margin: 0 $bMargin;
+			}
+		}
+		.tos-caption
+		{
+			bottom: $bSize + $padding + ( $padding / 2 );
+		}
+		.tos-uibg
+		{
+			height: ( $padding * 4 ) + $bSize;
+		}
+		&.tos-has-caption .tos-uibg
+		{
+			height: ( $padding * 5 ) + $bSize + ( $captLineHeight * $scale );
 		}
 	}
-	
-	//	In combination with caption
-	&.tos-has-caption .tos-pagination
+
+	&.tos-has-thumbnails
 	{
-		height: $size + ( $uiPadding * $scale );
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-	&.tos-has-pagination .tos-caption
-	{
-		padding-bottom: $size;
-		bottom: $size + ( $uiPadding * $scale );
+		.tos-pagination
+		{
+			height: $tSize;
+			a
+			{
+				background-position: center center;
+				background-size: cover;
+				width: $tSize;
+				height: $tSize;
+				margin: 0 $tMargin;
+			}
+		}
+		.tos-caption
+		{
+			bottom: $tSize + $padding + ( $padding / 2 );
+		}
+		.tos-uibg
+		{
+			height: ( $padding * 4 ) + $tSize;
+		}
+		&.tos-has-caption .tos-uibg
+		{
+			height: ( $padding * 5 ) + $tSize + ( $captLineHeight * $scale );
+		}
 	}
 }
 @mixin sizing_pagination_slide_padding( $scale: 1 )
 {
-	.tos-slide
+	&.tos-has-bullets .tos-slide
 	{
-		padding-bottom: $uiPadding * 3 * $scale;
+		padding-bottom: ( ( $uiPadding * 2 ) + $bulletSize ) * $scale;
+	}
+	&.tos-has-bullets.tos-has-caption .tos-slide
+	{
+		padding-bottom: ( ( $uiPadding * 2.5 ) + $bulletSize + $captLineHeight ) * $scale;
+	}
+	&.tos-has-thumbnails .tos-slide
+	{
+		padding-bottom: ( ( $uiPadding * 2 ) + $thumbnailSize ) * $scale;
+	}
+	&.tos-has-thumbnails.tos-has-caption .tos-slide
+	{
+		padding-bottom: ( ( $uiPadding * 2.5 ) + $thumbnailSize + $captLineHeight ) * $scale;
 	}
 	
-	&.tos-has-caption .tos-slide
-	{
-		padding-bottom: ( ( $uiPadding * 3 ) + $captLineHeight ) * $scale;
-	}
 }
 
 .tos-pagination
@@ -64,12 +117,15 @@ $bulletSize: 10px !default;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	z-index: 0;
+	z-index: 1;
 
 	a
 	{
-		background-color: rgba( $uiTextColor, $uiDisabledOpacity );
 		display: inline-block;
+	}
+	&.tos-bullets a
+	{
+		background-color: rgba( $uiTextColor, $uiDisabledOpacity );
 		
 		&:hover
 		{
@@ -78,11 +134,6 @@ $bulletSize: 10px !default;
 		&.tos-selected
 		{
 			background-color: rgba( $uiTextColor, $uiActiveOpacity );
-		}
-
-		span
-		{
-			display: none;
 		}
 	}
 }
@@ -97,21 +148,12 @@ $bulletSize: 10px !default;
 	}
 }
 
-//	In combination with caption
-.tos-wrapper
-{
-	&.tos-has-caption .tos-pagination
-	{
-		background: rgba( $uiBgColor, $uiBgOpacity );
-	}
-}
-
 //	Sizing
 .tos-wrapper
 {
 	@include sizing_pagination;
 }
-.tos-desktop .tos-wrapper.tos-fixed.tos-fit.tos-has-pagination
+.tos-desktop .tos-wrapper.tos-fixed.tos-fit
 {
 	@include sizing_pagination_slide_padding;
 }

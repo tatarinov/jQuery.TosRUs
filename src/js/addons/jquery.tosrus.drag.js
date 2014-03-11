@@ -4,8 +4,6 @@
  *
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
- *
- *	@requires tosrus 2.0.0 or later
  */
 
 (function( $ ) {

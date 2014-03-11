@@ -4,8 +4,6 @@
  *
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
- *
- *	@requires tosrus 2.0.0 or later
  */
  
  (function( $ ) {
@@ -26,7 +24,7 @@
 			_f = $[ _PLUGIN_ ]._f;
 			_g = $[ _PLUGIN_ ]._g;
 
-			_c.add( 'caption' );
+			_c.add( 'caption uibg' );
 			_d.add( 'caption' );
 
 			_addonInitiated = true;
@@ -35,11 +33,37 @@
 		var that = this,
 			capt = this.opts[ _ADDON_ ];
 
-		this.nodes.$capt = null;
 
-		if ( $.isArray( capt ) && this.vars.fixed )
+		//	DEPRECATED
+		if ( $.isArray( capt ) )
 		{
-			this.nodes.$capt = $('<div class="' + _c.caption + '" />').appendTo( this.nodes.$wrpr );
+			$[ _PLUGIN_ ].deprecated( 'An array for the option "caption"', 'the option "caption.attributes"' );
+		}
+		//	/DEPRECATED
+
+
+		capt = _f.complObject( capt, {} );
+
+		if ( capt.add && this.vars.fixed )
+		{
+
+			if ( typeof capt.target == 'string' )
+			{
+				capt.target = $(capt.target);
+			}
+			if ( capt.target instanceof $ )
+			{
+				this.nodes.$capt = capt.target;
+			}
+			else
+			{
+				this.nodes.$capt = $('<div class="' + _c.caption + '" />').appendTo( this.nodes.$wrpr );
+				if ( !this.nodes.$uibg )
+				{
+					this.nodes.$uibg = $('<div class="' + _c.uibg + '" />').prependTo( this.nodes.$wrpr );
+				}
+			}
+			capt.attributes = capt.attributes || [];
 
 			this.nodes.$anchors
 				.each(
@@ -49,9 +73,9 @@
 							$slide = $anchor.data( _d.slide );
 
 						$slide.data( _d.caption, '' );
-						for ( var c = 0, l = capt.length; c < l; c++ )
+						for ( var c = 0, l = capt.attributes.length; c < l; c++ )
 						{
-							var caption = $anchor.attr( capt[ c ] );
+							var caption = $anchor.attr( capt.attributes[ c ] );
 							if ( caption && caption.length )
 							{
 								$slide.data( _d.caption, caption );
@@ -76,7 +100,11 @@
 	};
 
 	//	Defaults
-	$[ _PLUGIN_ ].defaults[ _ADDON_ ] = [ 'title', 'rel' ];
+	$[ _PLUGIN_ ].defaults[ _ADDON_ ] = {
+		add			: false,
+		target		: null,
+		attributes	: [ 'title', 'rel' ]
+	};
 
 	//	Add to plugin
 	$[ _PLUGIN_ ].addons.push( _ADDON_ );

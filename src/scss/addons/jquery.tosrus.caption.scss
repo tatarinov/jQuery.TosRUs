@@ -9,6 +9,7 @@
 
 @mixin sizing_caption( $scale: 1 )
 {
+	$padding: $uiPadding * $scale;
 
 	//	Sizing
 	.tos-caption
@@ -16,15 +17,20 @@
 		line-height: $captLineHeight * $scale;
 		font-size: $captFontSize * $scale;
 		text-shadow: 0 ( 1px * $scale ) ( 2px * $scale ) rgba( 0, 0, 0, 0.8 );
-
-		@include background-gradient( $scale );
+		bottom: $padding;
+	}
+	&.tos-has-caption .tos-uibg
+	{
+		height: ( $padding * 4 ) + ( $captLineHeight * $scale );
 	}
 }
 @mixin sizing_caption_slide_padding( $scale: 1 )
 {
+	$padding: $uiPadding * $scale;
+
 	.tos-slide
 	{
-		padding-bottom: ( $uiPadding + $uiPadding + $captLineHeight ) * $scale;
+		padding-bottom:( $padding * 2 ) + ( $captLineHeight * $scale );
 	}
 }
 
@@ -40,9 +46,8 @@
 	padding-left: $uiPadding;
 	padding-right: $uiPadding;
 	position: absolute;
-	bottom: 0;
 	left: 0;
-	z-index: 0;
+	z-index: 1;
 
 	@include vendor-prefix-property( 'box-sizing', border-box );
 	

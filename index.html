@@ -24,11 +24,19 @@
 			jQuery(function( $ ) {
 
 				$('#example-1 a').tosrus({
-					caption		: false
+					pagination	: {
+						add			: true,
+						type		: 'thumbnails'
+					}
 				});
 
 				$('#example-2 a').tosrus({
-					pagination	: true,
+					pagination	: {
+						add			: true
+					},
+					caption		: {
+						add			: true
+					},
 					slides		: {
 						scale		: 'fill'
 					}
@@ -45,7 +53,9 @@
 
 				$('#example-5').tosrus({
 					buttons		: false,
-					pagination	: true,
+					pagination	: {
+						add			: true
+					},
 					slides		: {
 						scale		: 'fill'
 					}
@@ -177,9 +187,9 @@
 				<h2>Lightbox popup examples</h2>
 				<p>Fire the plugin on a (set of) thumbnail(s) and it will create a lightbox popup with a slider for the enlarged images.<br />
 					The plugin will automatically create a gallery from the targeted anchors.</p>
-				<p>This lightbox has been set up with no captions and no pagination:</p>
+				<p>This lightbox has been set up with a thumbnail pagination:</p>
 				<div id="example-1" class="thumbs">
-					<a href="http://lorempixel.com/1200/675/cats/5/?img.jpg" title="adsf">
+					<a href="http://lorempixel.com/1200/675/cats/5/?img.jpg">
 						<img src="http://lorempixel.com/130/130/cats/5/" /></a>
 					<a href="http://lorempixel.com/1200/675/cats/6/?img.jpg">
 						<img src="http://lorempixel.com/130/130/cats/6/" /></a>
@@ -190,11 +200,14 @@
 				</div>
 <pre>
 $(&quot;#example a&quot;).tosrus({
-   caption : false
+   pagination : {
+      add        : true,
+      type       : &quot;thumbnails&quot;
+   }
 });
 </pre>
 				<br />
-				<p>This lightbox has been set up so that the images fill up the entire screen and has captions and a pagination:</p>
+				<p>This lightbox has been set up so that the images fill up the entire screen and has captions and a bullet pagination:</p>
 				<div id="example-2" class="thumbs">
 					<a href="http://lorempixel.com/1200/675/cats/1/?img.jpg" title="White cat on purple cushion.">
 						<img src="http://lorempixel.com/130/130/cats/1/" /></a>
@@ -207,7 +220,12 @@ $(&quot;#example a&quot;).tosrus({
 				</div>
 <pre>
 $(&quot;#example a&quot;).tosrus({
-   pagination : true,
+   pagination : {
+      add        : true
+   },
+   caption    : {
+      add        : true
+   },
    slides     : {
       scale      : &quot;fill&quot;
    }
@@ -273,7 +291,9 @@ $(&quot;#example&quot;).tosrus({
 <pre>
 $(&quot;#example&quot;).tosrus({
    buttons    : false,
-   pagination : true,
+   pagination : {
+      add          : true
+   },
    slides     : {
       scale      : &quot;fill&quot;
    }

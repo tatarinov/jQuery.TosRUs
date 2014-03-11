@@ -56,13 +56,14 @@
   position: relative; }
 
 .tos-wrapper.tos-fx-slide .tos-slider {
-  position: absolute;
   left: 0;
   -webkit-transition: left 0.4s ease;
   -moz-transition: left 0.4s ease;
   -ms-transition: left 0.4s ease;
   -o-transition: left 0.4s ease;
   transition: left 0.4s ease; }
+.tos-wrapper.tos-fx-slide.tos-fixed .tos-slider {
+  position: absolute; }
 
 .tos-wrapper.tos-fx-fade .tos-slider {
   opacity: 1;
@@ -71,6 +72,28 @@
   -ms-transition: opacity 0.4s ease;
   -o-transition: opacity 0.4s ease;
   transition: opacity 0.4s ease; }
+
+.tos-uibg {
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  -webkit-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1; }
+
+.tos-desktop .tos-wrapper:hover .tos-uibg,
+.tos-touch .tos-wrapper.tos-hover .tos-uibg {
+  opacity: 1; }
 
 .tos-slide {
   -webkit-overflow-scrolling: touch;

@@ -4,8 +4,6 @@
  *
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
- *
- *	@requires tosrus 2.0.0 or later
  */
 
  
@@ -27,7 +25,7 @@
 			_f = $[ _PLUGIN_ ]._f;
 			_g = $[ _PLUGIN_ ]._g;
 
-			_c.add( ' prev next close disabled' );
+			_c.add( 'prev next close disabled' );
 
 			_addonInitiated = true;
 		}
@@ -46,14 +44,9 @@
 				next: btns
 			};
 		}
-		else
-		{
-			btns = _f.complObject( btns, {} );
-			btns = $.extend( true, {}, $[ _PLUGIN_ ].defaults[ _ADDON_ ], btns );
-		}
 		if ( typeof btns.close == 'undefined' )
 		{
- 			btns.close = ( this.opts.wrapper.target == 'window' );
+ 			btns.close = this.vars.fixed;
 		}
 
 		$.each(
@@ -87,6 +80,7 @@
 								);
 						}
 					}
+
 					//	External buttons
 					else
 					{
