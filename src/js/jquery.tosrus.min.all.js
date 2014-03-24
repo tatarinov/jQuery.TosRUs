@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.1.0
+ *	jQuery Touch Optimized Sliders "R"Us 2.1.1
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
