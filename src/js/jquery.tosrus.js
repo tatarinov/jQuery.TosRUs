@@ -18,7 +18,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.1.0';
+		_VERSION_	= '2.1.1';
 
 
 	//	Plugin already excists
@@ -90,7 +90,7 @@
 				)
 
 				//	Callback events
-				.on( _e.opening + ' ' + _e.closing + ' ' + _e.sliding + ' ' + _e.loading,
+				.on( _e.opening + ' ' + _e.closing + ' ' + _e.sliding + ' ' + _e.loading + ' ' + _e.loaded,
 					function( e )
 					{
 						e.stopPropagation();
@@ -649,7 +649,7 @@
 	/*
 		EFFECTS
 	*/
-	$[ _PLUGIN_ ].effects	= {
+	$[ _PLUGIN_ ].effects = {
 		'slide': function( left )
 		{
 			this.nodes.$sldr.css( 'left', left );
@@ -707,7 +707,7 @@
 		_d.add( 'slide anchor' );
 
 		//	Eventnames
-		_e.add( 'open opening close closing prev next slideTo sliding click pinch scroll resize orientationchange load loading transitionend webkitTransitionEnd' );
+		_e.add( 'open opening close closing prev next slideTo sliding click pinch scroll resize orientationchange load loading loaded transitionend webkitTransitionEnd' );
 
 		//	Functions
 		_f = {

@@ -49,7 +49,10 @@
 		//	/DEPRECATED
 
 
-		pagr = _f.complObject( pagr, {} );
+		if ( this.nodes.$slides.length < 2 )
+		{
+			pagr.add = false;
+		}
 
 		if ( pagr.add )
 		{
@@ -75,11 +78,22 @@
 				switch( pagr.type )
 				{
 					case 'thumbnails':
-						pagr.anchorBuilder = function( index )
+						if ( this.vars.fixed )
 						{
-							return '<a href="#" style="background-image: url(' + $(this).data( _d.anchor ).attr( 'href' ) + ')"></a>';
-						};
+							pagr.anchorBuilder = function( index )
+							{
+								return '<a href="#" style="background-image: url(' + $(this).data( _d.anchor ).attr( 'href' ) + ');"></a>';
+							};
+						}
+						else
+						{
+							pagr.anchorBuilder = function( index )
+							{
+								return '<a href="#" style="background-image: url(' + $(this).find( 'img' ).attr( 'src' ) + ');"></a>';
+							};
+						}
 						break;
+
 					case 'bullets':
 					default:
 						pagr.anchorBuilder = function( index )

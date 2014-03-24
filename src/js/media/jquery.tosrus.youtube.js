@@ -4,8 +4,6 @@
  *
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
- *
- * @requires tosrus 2.0.0 or later
  */
 
 (function( $ ) {
@@ -41,7 +39,8 @@
 						function( e )
 						{
 							e.stopPropagation();
-							$s.removeClass( $[ _PLUGIN_ ]._c.loading );
+							$s.removeClass( $[ _PLUGIN_ ]._c.loading )
+								.trigger( $[ _PLUGIN_ ]._e.loaded );
 						}
 					)
 					.appendTo( $s )
@@ -100,6 +99,7 @@
 			maxHeight	= $a.data( _d.maxHeight )	|| this.opts[ _MEDIA_ ].maxHeight;
 
 		$s.removeClass( _c.loading )
+			.trigger( _e.loaded )
 			.on( _e.loading,
 				function( e )
 				{

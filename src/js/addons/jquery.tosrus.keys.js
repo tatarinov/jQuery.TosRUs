@@ -42,6 +42,11 @@
 		}
 		if ( $.isPlainObject( keys) )
 		{
+			if ( this.nodes.$slides.length < 2 )
+			{
+				keys.prev = false;
+				keys.next = false;
+			}
 			$(document)
 				.on( _e.keyup,
 					function( e )

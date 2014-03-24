@@ -42,8 +42,6 @@
 		//	/DEPRECATED
 
 
-		capt = _f.complObject( capt, {} );
-
 		if ( capt.add && this.vars.fixed )
 		{
 

@@ -4,8 +4,6 @@
  *
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
- *
- * @requires tosrus 2.0.0 or later
  */
 
 (function( $ ) {
@@ -24,10 +22,12 @@
 		//	Create Slides from anchors
 		initAnchors: function( $s, href )
 		{
-			$s.removeClass( $[ _PLUGIN_ ]._c.loading );
 			$('<div class="' + $[ _PLUGIN_ ]._c.html + '" />')
 				.append( $(href) )
 				.appendTo( $s );
+
+			$s.removeClass( $[ _PLUGIN_ ]._c.loading )
+				.trigger( $[ _PLUGIN_ ]._e.loaded );
 		},
 
 		//	Filter slides

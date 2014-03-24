@@ -5,7 +5,6 @@
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
  */
-
  
  (function( $ ) {
  
@@ -47,6 +46,11 @@
 		if ( typeof btns.close == 'undefined' )
 		{
  			btns.close = this.vars.fixed;
+		}
+		if ( this.nodes.$slides.length < 2 )
+		{
+			btns.prev = false;
+			btns.next = false;
 		}
 
 		$.each(
