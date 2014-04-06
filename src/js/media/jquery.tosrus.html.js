@@ -22,7 +22,7 @@
 		//	Create Slides from anchors
 		initAnchors: function( $s, href )
 		{
-			$('<div class="' + $[ _PLUGIN_ ]._c.html + '" />')
+			$('<div class="' + $[ _PLUGIN_ ]._c( 'html' ) + '" />')
 				.append( $(href) )
 				.appendTo( $s );
 
