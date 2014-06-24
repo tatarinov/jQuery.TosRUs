@@ -48,7 +48,7 @@
 			}
 			else
 			{
-				$('<iframe src="http://www.youtube.com/embed/' + href + '" frameborder="0" allowfullscreen />')
+				$('<iframe src="http://www.youtube.com/embed/' + href + '?enablejsapi=1" frameborder="0" allowfullscreen />')
 					.appendTo( $s );
 
 				initVideo.call( this, $s );
