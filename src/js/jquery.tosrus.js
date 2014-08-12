@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.1.3
+ *	jQuery Touch Optimized Sliders "R"Us 2.1.4
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -18,7 +18,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.1.3';
+		_VERSION_	= '2.1.4';
 
 
 	//	Plugin already excists
@@ -102,7 +102,16 @@
 					function( e )
 					{
 						e.stopPropagation();
-						that.nodes.$wrpr.toggleClass( _c.hover );
+						switch ( that.opts.wrapper.onClick )
+						{
+							case 'toggleUI':
+								that.nodes.$wrpr.toggleClass( _c.hover );
+								break;
+							
+							case 'close':
+								that.close();
+								break;
+						}
 					}
 				);
 
@@ -616,7 +625,8 @@
 		effect		: 'slide',
 		wrapper	: {
 //			target	: null,				//	"window" for lightbox popup
-			classes	: ''
+			classes	: '',
+			onClick	: 'toggleUI'		//	"toggleUI", "close" or null
 		},
 		slides	: {
 //			slide	: null,				//	slides.visible
