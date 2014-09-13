@@ -7,7 +7,7 @@ On a desktop, tablet or smartphone, inside a HTML element or as a lightbox popup
 Demo's: http://tosrus.frebsite.nl/examples.php<br />
 Documentation: http://tosrus.frebsite.nl
 
-<img src="http://tosrus.frebsite.nl/img/preview-2.png" width="100%" border="0" />
+<img src="http://tosrus.frebsite.nl/img/preview-3.png" width="100%" border="0" />
 
 ### Features
 
