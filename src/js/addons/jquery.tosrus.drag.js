@@ -48,12 +48,16 @@
 					.on( _e.dragstart,
 						function( e )
 						{
-							 e.stopPropagation();
-							if ( e.gesture )
-							{
-								e.gesture.preventDefault();
-								that.nodes.$sldr.addClass( _c.noanimation );
-							}
+						    	_direction = e.gesture.direction;
+					    		if (_direction == 'left' || _direction == 'right')
+                    					{
+						        	e.stopPropagation();
+						        	if (e.gesture) {
+						            		e.gesture.preventDefault();
+						            		that.nodes.$sldr.addClass(_c.noanimation);
+						        	}
+                    					}
+							
 						}
 					)
 					.on( _e.dragleft + ' ' + _e.dragright,
