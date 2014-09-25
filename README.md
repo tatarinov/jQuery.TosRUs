@@ -24,6 +24,5 @@ Documentation: http://tosrus.frebsite.nl
 Please visit http://tosrus.frebsite.nl
 
 ### Licence
-The jQuery.TosRUs plugin is dual licensed under the MIT and GPL licenses:
+The jQuery.TosRUs plugin is licensed under the MIT license:
 + http://en.wikipedia.org/wiki/MIT_License
-+ http://en.wikipedia.org/wiki/GNU_General_Public_License

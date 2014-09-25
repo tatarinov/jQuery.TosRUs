@@ -25,8 +25,9 @@
 		//	Create Slides from anchors
 		initAnchors: function( $s, href )
 		{
-			href = href.split( 'vimeo.com/' )[ 1 ].split( '?' )[ 0 ] + '?api=1';
-			$('<iframe src="http://player.vimeo.com/video/' + href + '" frameborder="0" allowfullscreen />')
+			var id = this._uniqueID();
+			href = href.split( 'vimeo.com/' )[ 1 ].split( '?' )[ 0 ] + '?api=1&player_id=' + id;
+			$('<iframe id="' + id + '" src="http://player.vimeo.com/video/' + href + '" frameborder="0" allowfullscreen />')
 				.appendTo( $s );
 
 			initVideo.call( this, $s );
@@ -71,6 +72,8 @@
 		var $v = $s.children(),
 			$a = $s.data( $[ _PLUGIN_ ]._d.anchor ) || $();
 
+		var src = $v.attr( 'src' );
+
 		var ratio 		= $a.data( _d.ratio ) 		|| this.opts[ _MEDIA_ ].ratio,
 			maxWidth 	= $a.data( _d.maxWidth ) 	|| this.opts[ _MEDIA_ ].maxWidth,
 			maxHeight	= $a.data( _d.maxHeight )	|| this.opts[ _MEDIA_ ].maxHeight;
@@ -88,13 +91,15 @@
 			.on( _e.sliding,
 				function( e )
 				{
-					commandVideo( 'pause' );
+				//	commandVideo( 'unload' );
+					unloadVideo();
 				}
 			)
 			.on( _e.closing,
 				function( e )
 				{
-					commandVideo( 'unload' );
+				//	commandVideo( 'pause' );
+					unloadVideo();
 				}
 			);
 
@@ -105,7 +110,16 @@
 					_f.resizeRatio( $v, $s, maxWidth, maxHeight, ratio );
 				}
 			);
-		
+
+		function unloadVideo()
+		{
+			if ( $v.length )
+			{
+				$v.attr( 'src', '' );
+				$v.attr( 'src', src );
+			}
+		}
+		//	Can't get this to work anymore...
 		function commandVideo( fn )
 		{
 			if ( $v.length )

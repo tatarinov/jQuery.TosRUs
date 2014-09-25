@@ -112,7 +112,7 @@
 
 	line-height: 1px;
 	text-align: center;
-	@include vendor-prefix-property( 'box-sizing', border-box );
+	box-sizing: border-box;
 
 	display: inline-block;
 	width: 100%;
@@ -177,10 +177,12 @@
 		display: inline-block;
 		max-height: 100%;
 		max-width: 100%;
-		@include vendor-prefix-property( 'box-sizing', border-box );
+		box-sizing: border-box;
 	}
 	&.tos-html > div
 	{
+		-webkit-overflow-scrolling: touch;
+
 		white-space: normal;
 		text-align: left;
 		line-height: 1.5;
@@ -207,8 +209,7 @@
 			background-color: $htmlBgColor;
 			color: $htmlTextColor;
 
-			@include vendor-prefix-property( 'box-sizing', border-box );
-		
+			box-sizing: border-box;
 			display: inline-block;
 			padding: $uiPadding * 2;
 			overflow: auto;

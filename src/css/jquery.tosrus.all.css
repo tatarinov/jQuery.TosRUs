@@ -99,10 +99,6 @@
   -webkit-overflow-scrolling: touch;
   line-height: 1px;
   text-align: center;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
   width: 100%;
@@ -185,12 +181,9 @@
   display: inline-block;
   max-height: 100%;
   max-width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
   box-sizing: border-box; }
 .tos-slide.tos-html > div {
+  -webkit-overflow-scrolling: touch;
   white-space: normal;
   text-align: left;
   line-height: 1.5; }
@@ -209,10 +202,6 @@
 .tos-wrapper.tos-fixed .tos-slide.tos-html > div {
   background-color: white;
   color: #333333;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
   padding: 40px;

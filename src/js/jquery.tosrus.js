@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.1.4
+ *	jQuery Touch Optimized Sliders "R"Us 2.2.0
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -7,9 +7,8 @@
  *	Plugin website:
  *	tosrus.frebsite.nl
  *
- *	Dual licensed under the MIT and GPL licenses.
+ *	Licensed under the MIT license.
  *	http://en.wikipedia.org/wiki/MIT_License
- *	http://en.wikipedia.org/wiki/GNU_General_Public_License
  */
 
 
@@ -18,7 +17,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.1.4';
+		_VERSION_	= '2.2.0';
 
 
 	//	Plugin already excists
@@ -115,6 +114,7 @@
 					}
 				);
 
+/*
 			//	Prevent pinching if opened
 			if ( $.fn.hammer && $[ _PLUGIN_ ].support.touch )
 			{
@@ -131,6 +131,7 @@
 						}
 					);
 			}
+*/
 
 			//	Nodes
 			this.nodes.$anchors = this._initAnchors();
@@ -408,13 +409,13 @@
 				for ( var m in $[ _PLUGIN_ ].media )
 				{
 					$a = $a.add( 
-							this.$node.filter(
-								function()
-								{
-									return $[ _PLUGIN_ ].media[ m ].filterAnchors.call( that, $(this).attr( 'href' ) );
-								}
-							)
-						);
+						this.$node.filter(
+							function()
+							{
+								return $[ _PLUGIN_ ].media[ m ].filterAnchors.call( that, $(this).attr( 'href' ) );
+							}
+						)
+					);
 				}
 			}
 			return $a;
@@ -579,6 +580,16 @@
 			}
 			this.opts.slides.slide		=   _f.complNumber( this.opts.slides.slide, this.opts.slides.visible );
 			this.opts.slides.offset 	= ( _f.isPercentage( this.opts.slides.offset ) ) ? _f.getPercentage( this.opts.slides.offset ) : _f.complNumber( this.opts.slides.offset, 0 );
+		},
+		
+		_uniqueID: function()
+		{
+			if ( !this.__uniqueID )
+			{
+				this.__uniqueID = 0;
+			}
+			this.__uniqueID++;
+			return _c( 'uid-' + this.__uniqueID );
 		}
 	};
 

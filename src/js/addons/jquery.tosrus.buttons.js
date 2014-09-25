@@ -75,10 +75,13 @@
 										var $btn = createButton( btn, ' ' + _c.inline )[ btn == 'prev' ? 'prependTo' : 'appendTo' ]( this );
 										bindEvent( that.nodes.$wrpr, $btn, btn, 1 );
 										
-										if (( btn == 'prev' && $(this).is( ':first-child' ) ) ||
-											( btn == 'next' && $(this).is( ':last-child' ) ) )
+										if ( !that.opts.infinite )
 										{
-											$btn.addClass( _c.disabled );
+											if (( btn == 'prev' && $(this).is( ':first-child' ) ) ||
+												( btn == 'next' && $(this).is( ':last-child' ) ) )
+											{
+												$btn.addClass( _c.disabled );
+											}
 										}
 									}
 								);

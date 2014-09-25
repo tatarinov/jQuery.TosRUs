@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta charset="utf-8" />
 		<meta name="author" content="www.frebsite.nl" />
 		<meta name="viewport" content="width=device-width" />
 		<title>jQuery Touch Optimized Sliders &quot;R&quot;Us</title>
@@ -9,8 +9,8 @@
 		<!-- include jQuery -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		
-		<!-- for dragging/swiping/pinching, include hammer.js -->
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js"></script>
+		<!-- for dragging/swiping/pinching, include Hammer.js -->
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/hammerjs/2.0.3/hammer.min.js"></script>
 
 		<!-- for scaling UI buttons (for wide websites on small screens), include FlameViewportScale -->
 		<script type="text/javascript" language="javascript" src="lib/FlameViewportScale.js"></script>
@@ -24,6 +24,7 @@
 			jQuery(function( $ ) {
 
 				$('#example-1 a').tosrus({
+					buttons: 'inline',
 					pagination	: {
 						add			: true,
 						type		: 'thumbnails'
@@ -187,7 +188,7 @@
 				<h2>Lightbox popup examples</h2>
 				<p>Fire the plugin on a (set of) thumbnail(s) and it will create a lightbox popup with a slider for the enlarged images.<br />
 					The plugin will automatically create a gallery from the targeted anchors.</p>
-				<p>This lightbox has been set up with a thumbnail pagination:</p>
+				<p>This lightbox has been set up with a thumbnail pagination and inline-buttons:</p>
 				<div id="example-1" class="thumbs">
 					<a href="http://lorempixel.com/1200/675/cats/5/?img.jpg">
 						<img src="http://lorempixel.com/130/130/cats/5/" /></a>
@@ -200,6 +201,7 @@
 				</div>
 <pre>
 $(&quot;#example a&quot;).tosrus({
+   buttons    : &quot;inline&quot;,
    pagination : {
       add        : true,
       type       : &quot;thumbnails&quot;
