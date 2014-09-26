@@ -34,16 +34,10 @@
 			capt = this.opts[ _ADDON_ ];
 
 
-		//	DEPRECATED
-		if ( $.isArray( capt ) )
+		if ( capt.add )
 		{
-			$[ _PLUGIN_ ].deprecated( 'An array for the option "caption"', 'the option "caption.attributes"' );
-		}
-		//	/DEPRECATED
 
-
-		if ( capt.add && this.vars.fixed )
-		{
+			capt.attributes = capt.attributes || [];
 
 			if ( typeof capt.target == 'string' )
 			{
@@ -61,14 +55,21 @@
 					this.nodes.$uibg = $('<div class="' + _c.uibg + '" />').prependTo( this.nodes.$wrpr );
 				}
 			}
-			capt.attributes = capt.attributes || [];
+			for ( var c = 0, l = this.slides.visible; c < l; c++ )
+			{
+				$('<div class="' + _c.caption + '-' + c + '" />')
+					.css( 'width', this.opts.slides.width + ( ( this.slides.widthPercentage ) ? '%' : 'px' ) )
+					.appendTo( this.nodes.$capt );
+			}
 
-			this.nodes.$anchors
+			this.nodes.$slides
 				.each(
 					function( index )
 					{
-						var $anchor = $(this),
-							$slide = $anchor.data( _d.slide );
+						var $slide = $(this),
+							$anchor = ( that.vars.fixed )
+								? $slide.data( _d.anchor )
+								: $slide.children();
 
 						$slide.data( _d.caption, '' );
 						for ( var c = 0, l = capt.attributes.length; c < l; c++ )
@@ -82,16 +83,19 @@
 						}
 					}
 				);
-			
 
 			this.nodes.$wrpr
 				.on( _e.sliding,
 					function( e, slide, direct )
 					{
-						var caption = that.nodes.$sldr.children().eq( that.slides.index ).data( _d.caption ) || '';
-						that.nodes.$capt
-							.text( caption )
-							[ ( caption.length > 0 ) ? 'removeClass' : 'addClass' ]( _c.disabled );
+						var show = false;
+						for ( var c = 0, l = that.slides.visible; c < l; c++ )
+						{
+							that.nodes.$capt
+								.children()
+								.eq( c )
+								.text( that.nodes.$sldr.children().eq( that.slides.index + c ).data( _d.caption ) || '' );
+						}						
 					}
 				);
 		}
@@ -101,7 +105,7 @@
 	$[ _PLUGIN_ ].defaults[ _ADDON_ ] = {
 		add			: false,
 		target		: null,
-		attributes	: [ 'title', 'rel' ]
+		attributes	: [ 'title', 'alt', 'rel' ]
 	};
 
 	//	Add to plugin

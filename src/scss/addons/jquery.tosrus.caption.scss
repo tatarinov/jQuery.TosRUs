@@ -43,17 +43,26 @@
 	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 
 	width: 100%;
-	padding-left: $uiPadding;
-	padding-right: $uiPadding;
 	position: absolute;
 	left: 0;
 	z-index: 1;
 
-	@include vendor-prefix-property( 'box-sizing', border-box );
-	
-	&.tos-disabled
+	&:after
 	{
-		opacity: 0 !important;
+		content: '';
+		display: block;
+		clear: both;
+	}
+	> div
+	{
+		box-sizing: border-box;
+		padding: 0 $uiPadding;
+		float: left;
+		&:last-child
+		{
+			float: right;
+			margin-right: -2px;
+		}
 	}
 }
 
