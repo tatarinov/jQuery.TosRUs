@@ -35,18 +35,27 @@
 		if ( typeof keys == 'boolean' && keys )
 		{
 			keys = {
-				prev	: 37,
-				next	: 39,
-				close	: 27
+				prev	: true,
+				next	: true,
+				close	: true
 			};
 		}
 		if ( $.isPlainObject( keys) )
 		{
+			for ( var k in $[ _PLUGIN_ ].constants[ _ADDON_ ] )
+			{
+				if ( typeof keys[ k ] == 'boolean' && keys[ k ] )
+				{
+					keys[ k ] = $[ _PLUGIN_ ].constants[ _ADDON_ ][ k ];
+				}
+			}
+
 			if ( this.nodes.$slides.length < 2 )
 			{
 				keys.prev = false;
 				keys.next = false;
 			}
+
 			$(document)
 				.on( _e.keyup,
 					function( e )
@@ -83,6 +92,12 @@
 
 	//	Defaults
 	$[ _PLUGIN_ ].defaults[ _ADDON_ ] = false;
+
+	$[ _PLUGIN_ ].constants[ _ADDON_ ] = {
+		prev	: 37,
+		next	: 39,
+		close	: 27
+	};
 
 	//	Add to plugin
 	$[ _PLUGIN_ ].addons.push( _ADDON_ );

@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.2.1
+ *	jQuery Touch Optimized Sliders "R"Us 2.2.2
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -17,7 +17,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.2.1';
+		_VERSION_	= '2.2.2';
 
 
 	//	Plugin already excists
@@ -652,6 +652,8 @@
 	$[ _PLUGIN_ ].configuration = {
 		transitionDuration: 400
 	};
+	
+	$[ _PLUGIN_ ].constants = {};
 
 
 	/*
