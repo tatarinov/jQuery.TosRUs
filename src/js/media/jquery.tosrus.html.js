@@ -14,30 +14,33 @@
 	$[ _PLUGIN_ ].media[ _MEDIA_ ] = {
 
 		//	Filter anchors
-		filterAnchors: function( href )
+		filterAnchors: function( $anchor )
 		{
+			var href = $anchor.attr( 'href' );
 			return ( href.slice( 0, 1 ) == '#' && $(href).is( 'div' ) )
 		},
 
 		//	Create Slides from anchors
-		initAnchors: function( $s, href )
+		initAnchors: function( $slide, href )
 		{
 			$('<div class="' + $[ _PLUGIN_ ]._c( 'html' ) + '" />')
 				.append( $(href) )
-				.appendTo( $s );
+				.appendTo( $slide );
 
-			$s.removeClass( $[ _PLUGIN_ ]._c.loading )
+			$slide.removeClass( $[ _PLUGIN_ ]._c.loading )
 				.trigger( $[ _PLUGIN_ ]._e.loaded );
 		},
 
 		//	Filter slides
-		filterSlides: function( $s )
+		filterSlides: function( $slide )
 		{
-			return $s.is( 'div' );
+			return $slide.is( 'div' );
 		},
 
 		//	Create slides from existing content
-		initSlides: function( $s ) {}
+		initSlides: function( $slide ) {}
 	};
+	
+	$[ _PLUGIN_ ].defaults.media[ _MEDIA_ ] = {};
 	
 })( jQuery );

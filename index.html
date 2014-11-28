@@ -23,6 +23,13 @@
 		<script type="text/javascript" language="javascript">
 			jQuery(function( $ ) {
 
+				//	Add a custom filter to recognize images from lorempixel (that don't end with ".jpg" or something similar)
+				$.tosrus.defaults.media.image = {
+					filterAnchors: function( $anchor ) {
+						return $anchor.attr( 'href' ).indexOf( 'lorempixel.com' ) > -1;
+					}
+				};
+
 				$('#example-1 a').tosrus({
 					buttons: 'inline',
 					pagination	: {
@@ -189,13 +196,13 @@
 					The plugin will automatically create a gallery from the targeted anchors.</p>
 				<p>This lightbox has been set up with a thumbnail pagination and inline-buttons:</p>
 				<div id="example-1" class="thumbs">
-					<a href="http://lorempixel.com/1200/675/cats/5/?img.jpg">
+					<a href="http://lorempixel.com/1200/675/cats/5/">
 						<img src="http://lorempixel.com/130/130/cats/5/" /></a>
-					<a href="http://lorempixel.com/1200/675/cats/6/?img.jpg">
+					<a href="http://lorempixel.com/1200/675/cats/6/">
 						<img src="http://lorempixel.com/130/130/cats/6/" /></a>
-					<a href="http://lorempixel.com/1200/675/cats/7/?img.jpg">
+					<a href="http://lorempixel.com/1200/675/cats/7/">
 						<img src="http://lorempixel.com/130/130/cats/7/" /></a>
-					<a href="http://lorempixel.com/1200/675/cats/8/?img.jpg">
+					<a href="http://lorempixel.com/1200/675/cats/8/">
 						<img src="http://lorempixel.com/130/130/cats/8/" /></a>
 				</div>
 <pre>
@@ -210,13 +217,13 @@ $(&quot;#example a&quot;).tosrus({
 				<br />
 				<p>This lightbox has been set up so that the images fill up the entire screen and has captions and a bullet pagination:</p>
 				<div id="example-2" class="thumbs">
-					<a href="http://lorempixel.com/1200/675/cats/1/?img.jpg" title="White cat on purple cushion.">
+					<a href="http://lorempixel.com/1200/675/cats/1/" title="White cat on purple cushion.">
 						<img src="http://lorempixel.com/130/130/cats/1/" /></a>
-					<a href="http://lorempixel.com/1200/675/cats/2/?img.jpg" title="Angry, scary cat.">
+					<a href="http://lorempixel.com/1200/675/cats/2/" title="Angry, scary cat.">
 						<img src="http://lorempixel.com/130/130/cats/2/" /></a>
-					<a href="http://lorempixel.com/1200/675/cats/3/?img.jpg" title="Brown cat that looks a bit annoyed.">
+					<a href="http://lorempixel.com/1200/675/cats/3/" title="Brown cat that looks a bit annoyed.">
 						<img src="http://lorempixel.com/130/130/cats/3/" /></a>
-					<a href="http://lorempixel.com/1200/675/cats/4/?img.jpg" title="Gray cat, chilling.">
+					<a href="http://lorempixel.com/1200/675/cats/4/" title="Gray cat, chilling.">
 						<img src="http://lorempixel.com/130/130/cats/4/" /></a>
 				</div>
 <pre>
@@ -260,14 +267,14 @@ $(&quot;#example a&quot;).tosrus();
 					Just like the lightbox popup, the slides in this slider are responsive by default.</p>
 				<p>This slider has been set up to show three slides and is infinite:</p>
 				<div id="example-4" class="gallery">
-					<img src="http://lorempixel.com/200/300/cats/1/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/2/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/3/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/4/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/5/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/6/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/7/?img.jpg" />
-					<img src="http://lorempixel.com/200/300/cats/8/?img.jpg" />
+					<img src="http://lorempixel.com/200/300/cats/1/" />
+					<img src="http://lorempixel.com/200/300/cats/2/" />
+					<img src="http://lorempixel.com/200/300/cats/3/" />
+					<img src="http://lorempixel.com/200/300/cats/4/" />
+					<img src="http://lorempixel.com/200/300/cats/5/" />
+					<img src="http://lorempixel.com/200/300/cats/6/" />
+					<img src="http://lorempixel.com/200/300/cats/7/" />
+					<img src="http://lorempixel.com/200/300/cats/8/" />
 				</div>
 <pre>
 $(&quot;#example&quot;).tosrus({
@@ -280,14 +287,14 @@ $(&quot;#example&quot;).tosrus({
 				<br />
 				<p>This slider has been set up to so that the images fill up the wrapper. It has no buttons, only a pagination:</p>
 				<div id="example-5" class="slider">
-					<img src="http://lorempixel.com/775/475/cats/1/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/2/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/3/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/4/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/5/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/6/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/7/?img.jpg" />
-					<img src="http://lorempixel.com/775/475/cats/8/?img.jpg" />
+					<img src="http://lorempixel.com/775/475/cats/1/" />
+					<img src="http://lorempixel.com/775/475/cats/2/" />
+					<img src="http://lorempixel.com/775/475/cats/3/" />
+					<img src="http://lorempixel.com/775/475/cats/4/" />
+					<img src="http://lorempixel.com/775/475/cats/5/" />
+					<img src="http://lorempixel.com/775/475/cats/6/" />
+					<img src="http://lorempixel.com/775/475/cats/7/" />
+					<img src="http://lorempixel.com/775/475/cats/8/" />
 				</div>
 <pre>
 $(&quot;#example&quot;).tosrus({
@@ -307,7 +314,7 @@ $(&quot;#example&quot;).tosrus({
 			<section>
 				<h4>About the images</h4>
 				<p>All images on this demo-page are hosted on <a href="http://lorempixel.com/" target="_blank">lorempixel.com</a>.<br />
-					Because these images are generated by a server-side script, they don't end with &quot;.jpg&quot; or something similar. To ensure the plugin would still recognise the url as an image, &quot;?img.jpg&quot; was added to the url.</p>
+					Because these images are generated by a server-side script, they don't end with &quot;.jpg&quot; or something similar. To ensure the plugin would still recognize the url as an image, a custom filter was added to the <code>$.tosrus.defaults.media.image</code> object.</p>
 				<p><strong>Why cats?</strong><br />
 					Because everybody loves cats, right?</p>
 			</section>

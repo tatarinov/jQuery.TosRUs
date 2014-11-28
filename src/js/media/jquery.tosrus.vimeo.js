@@ -17,38 +17,40 @@
 	$[ _PLUGIN_ ].media[ _MEDIA_ ] = {
 
 		//	Filter anchors
-		filterAnchors: function( href )
+		filterAnchors: function( $anchor )
 		{
-			return ( href.toLowerCase().indexOf( 'vimeo.com/' ) > -1 );
+			return ( $anchor.attr( 'href' ).toLowerCase().indexOf( 'vimeo.com/' ) > -1 );
 		},
 	
 		//	Create Slides from anchors
-		initAnchors: function( $s, href )
+		initAnchors: function( $slide, href )
 		{
 			var id = this._uniqueID();
 			href = href.split( 'vimeo.com/' )[ 1 ].split( '?' )[ 0 ] + '?api=1&player_id=' + id;
 			$('<iframe id="' + id + '" src="http://player.vimeo.com/video/' + href + '" frameborder="0" allowfullscreen />')
-				.appendTo( $s );
+				.appendTo( $slide );
 
-			initVideo.call( this, $s );
+			initVideo.call( this, $slide );
 		},
 
 		//	Filter slides
-		filterSlides: function( $s )
+		filterSlides: function( $slide )
 		{
-			if ( $s.is( 'iframe' ) && $s.attr( 'src' ) )
+			if ( $slide.is( 'iframe' ) && $slide.attr( 'src' ) )
 			{			
-				return ( $s.attr( 'src' ).toLowerCase().indexOf( 'vimeo.com/video/' ) > -1 );
+				return ( $slide.attr( 'src' ).toLowerCase().indexOf( 'vimeo.com/video/' ) > -1 );
 			}
 			return false;
 		},
 
 		//	Create slides from existing content
-		initSlides: function( $s )
+		initSlides: function( $slide )
 		{
-			initVideo.call( this, $s );
+			initVideo.call( this, $slide );
 		}
 	};
+	
+	$[ _PLUGIN_ ].defaults.media[ _MEDIA_ ] = {};
 
 
 	//	Functions

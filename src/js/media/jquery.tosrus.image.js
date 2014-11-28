@@ -14,35 +14,37 @@
 	$[ _PLUGIN_ ].media[ _MEDIA_ ] = {
 
 		//	Filter anchors
-		filterAnchors: function( href )
+		filterAnchors: function( $anchor )
 		{
-			return ( $.inArray( href.toLowerCase().split( '.' ).pop().split( '?' )[ 0 ], [ 'jpg', 'jpe', 'jpeg', 'gif', 'png' ] ) > -1 );
+			return ( $.inArray( $anchor.attr( 'href' ).toLowerCase().split( '.' ).pop().split( '?' )[ 0 ], [ 'jpg', 'jpe', 'jpeg', 'gif', 'png' ] ) > -1 );
 		},
 		
 		//	Create Slides from anchors
-		initAnchors: function( $s, href )
+		initAnchors: function( $slide, href )
 		{
 			$('<img border="0" />')
 				.on( $[ _PLUGIN_ ]._e.load,
 					function( e )
 					{
 						e.stopPropagation();
-						$s.removeClass( $[ _PLUGIN_ ]._c.loading )
+						$slide.removeClass( $[ _PLUGIN_ ]._c.loading )
 							.trigger( $[ _PLUGIN_ ]._e.loaded );
 					}
 				)
-				.appendTo( $s )
+				.appendTo( $slide )
 				.attr( 'src', href );
 		},
 
 		//	Filter slides
-		filterSlides: function( $s )
+		filterSlides: function( $slide )
 		{
-			return $s.is( 'img' );
+			return $slide.is( 'img' );
 		},
 
 		//	Create slides from existing content
-		initSlides: function( $s ) {}
+		initSlides: function( $slide ) {}
 	};
+	
+	$[ _PLUGIN_ ].defaults.media[ _MEDIA_ ] = {};
 	
 })( jQuery );

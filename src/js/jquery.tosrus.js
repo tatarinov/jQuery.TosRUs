@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.2.2
+ *	jQuery Touch Optimized Sliders "R"Us 2.3.0
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -17,7 +17,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.2.2';
+		_VERSION_	= '2.3.0';
 
 
 	//	Plugin already excists
@@ -412,7 +412,15 @@
 						this.$node.filter(
 							function()
 							{
-								return $[ _PLUGIN_ ].media[ m ].filterAnchors.call( that, $(this).attr( 'href' ) );
+								if ( that.opts.media[ m ] && that.opts.media[ m ].filterAnchors )
+								{
+									var result = that.opts.media[ m ].filterAnchors.call( that, $(this) );
+									if ( typeof result == 'boolean' )
+									{
+										return result;
+									}
+								}
+								return $[ _PLUGIN_ ].media[ m ].filterAnchors.call( that, $(this) );
 							}
 						)
 					);
@@ -471,7 +479,16 @@
 						//	Init slide content
 						for ( var m in $[ _PLUGIN_ ].media )
 						{
-							if ( $[ _PLUGIN_ ].media[ m ].filterSlides.call( that, $slide ) )
+							var result = null;
+							if ( that.opts.media[ m ] && that.opts.media[ m ].filterSlides )
+							{
+								result = that.opts.media[ m ].filterSlides.call( that, $slide );
+							}
+							if ( typeof result != 'boolean' )
+							{
+								result = $[ _PLUGIN_ ].media[ m ].filterSlides.call( that, $slide );
+							}
+							if ( result )
 							{
 								$[ _PLUGIN_ ].media[ m ].initSlides.call( that, $slide );
 								$slide.parent().addClass( _c( m ) );
@@ -526,12 +543,23 @@
 
 						if ( $slide.children().length == 0 )
 						{
-							var content = $slide.data( _d.anchor ).attr( 'href' );
+							var $anchor = $slide.data( _d.anchor ),
+								content = $anchor.attr( 'href' );
 
 							//	Search for slide content
 							for ( var m in $[ _PLUGIN_ ].media )
 							{
-								if ( $[ _PLUGIN_ ].media[ m ].filterAnchors.call( that, content ) )
+								var result = null;
+								if ( that.opts.media[ m ] && that.opts.media[ m ].filterAnchors )
+								{
+									result = that.opts.media[ m ].filterAnchors.call( that, $anchor );
+								}
+								if ( typeof result != 'boolean' )
+								{
+									result = $[ _PLUGIN_ ].media[ m ].filterAnchors.call( that, $anchor );
+								}
+								
+								if ( result )
 								{
 									$[ _PLUGIN_ ].media[ m ].initAnchors.call( that, $slide, content );
 									$slide.addClass( _c( m ) );
@@ -646,7 +674,8 @@
 			scale	: 'fit',			//	"fit" or "fill" (for images only)
 			load	: 'near-visible',	//	"all", "visible" or "near-visible"
 			visible	: 1
-		}
+		},
+		media	: {}
 	};
 
 	$[ _PLUGIN_ ].configuration = {

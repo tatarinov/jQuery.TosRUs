@@ -17,13 +17,13 @@
 	$[ _PLUGIN_ ].media[ _MEDIA_ ] = {
 
 		//	Filter anchors
-		filterAnchors: function( href )
+		filterAnchors: function( $anchor )
 		{
-			return ( href.toLowerCase().indexOf( 'youtube.com/watch?v=' ) > -1 );
+			return ( $anchor.attr( 'href' ).toLowerCase().indexOf( 'youtube.com/watch?v=' ) > -1 );
 		},
 		
 		//	Create Slides from anchors
-		initAnchors: function( $s, href )
+		initAnchors: function( $slide, href )
 		{
 			var url = href;
 			href = href.split( '?v=' )[ 1 ].split( '&' )[ 0 ];
@@ -32,45 +32,47 @@
 			{
 				href = 'http://img.youtube.com/vi/' + href + '/0.jpg';
 				$('<a href="' + url + '" class="' + $[ _PLUGIN_ ]._c( 'play' ) + '" target="_blank" />')
-					.appendTo( $s );
+					.appendTo( $slide );
 
 				$('<img border="0" />')
 					.on( $[ _PLUGIN_ ]._e.load,
 						function( e )
 						{
 							e.stopPropagation();
-							$s.removeClass( $[ _PLUGIN_ ]._c.loading )
+							$slide.removeClass( $[ _PLUGIN_ ]._c.loading )
 								.trigger( $[ _PLUGIN_ ]._e.loaded );
 						}
 					)
-					.appendTo( $s )
+					.appendTo( $slide )
 					.attr( 'src', href );
 			}
 			else
 			{
 				$('<iframe src="http://www.youtube.com/embed/' + href + '?enablejsapi=1" frameborder="0" allowfullscreen />')
-					.appendTo( $s );
+					.appendTo( $slide );
 
-				initVideo.call( this, $s );
+				initVideo.call( this, $slide );
 			}
 		},
 
 		//	Filter slides
-		filterSlides: function( $s )
+		filterSlides: function( $slide )
 		{
-			if ( $s.is( 'iframe' ) && $s.attr( 'src' ) )
+			if ( $slide.is( 'iframe' ) && $slide.attr( 'src' ) )
 			{
-				return ( $s.attr( 'src' ).toLowerCase().indexOf( 'youtube.com/embed/' ) > -1 );
+				return ( $slide.attr( 'src' ).toLowerCase().indexOf( 'youtube.com/embed/' ) > -1 );
 			}
 			return false;
 		},
 
 		//	Create slides from existing content
-		initSlides: function( $s )
+		initSlides: function( $slide )
 		{
-			initVideo.call( this, $s );
+			initVideo.call( this, $slide );
 		}
 	};
+	
+	$[ _PLUGIN_ ].defaults.media[ _MEDIA_ ] = {};
 
 
 	//	Functions

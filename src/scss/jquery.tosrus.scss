@@ -129,29 +129,9 @@
 		margin-right: -1px;
 	}
 	
-	&.tos-loading
+	&.tos-loading > *
 	{
-		&:after
-		{
-			content: '';
-			border-right: 5px solid $uiBgColor;
-			border-radius: 50%;
-
-			display: block;
-			width: $loadingSize;
-			height: $loadingSize;
-			margin: -( $loadingSize / 2 );
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			z-index: -1;
-	
-			@include vendor-prefix-property( 'animation', spin 1s infinite linear );
-		}
-		> *
-		{
-			opacity: 0;
-		}
+		opacity: 0;
 	}
 	
 	> *
@@ -160,12 +140,6 @@
 		@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
 	}
 }
-.tos-wrapper.tos-fixed .tos-slide.tos-loading:after
-{
-	border-right-color: $uiTextColor;
-}
-
-@include vendor-prefix-keyframes( 'spin', 'transform', rotate( 0deg ), rotate( 360deg ) );
 
 
 //	Content
