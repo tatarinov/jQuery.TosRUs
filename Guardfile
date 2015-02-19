@@ -9,6 +9,7 @@
 guard :concat, type: "js", files: %w(jquery.tosrus), input_dir: "src/js", output: "src/js/jquery.tosrus.min"
 
 # Addons
+guard :concat, type: "js", files: %w(jquery.tosrus.autoplay), input_dir: "src/js/addons", output: "src/js/addons/jquery.tosrus.autoplay.min"
 guard :concat, type: "js", files: %w(jquery.tosrus.buttons), input_dir: "src/js/addons", output: "src/js/addons/jquery.tosrus.buttons.min"
 guard :concat, type: "js", files: %w(jquery.tosrus.caption), input_dir: "src/js/addons", output: "src/js/addons/jquery.tosrus.caption.min"
 guard :concat, type: "js", files: %w(jquery.tosrus.drag), input_dir: "src/js/addons", output: "src/js/addons/jquery.tosrus.drag.min"
@@ -30,6 +31,9 @@ guard 'uglify', :destination_file => "src/js/jquery.tosrus.min.js" do
 end
 
 # Addons
+guard 'uglify', :destination_file => "src/js/addons/jquery.tosrus.autoplay.min.js" do
+  watch ('src/js/addons/jquery.tosrus.autoplay.min.js')
+end
 guard 'uglify', :destination_file => "src/js/addons/jquery.tosrus.buttons.min.js" do
   watch ('src/js/addons/jquery.tosrus.buttons.min.js')
 end
@@ -61,4 +65,4 @@ guard 'uglify', :destination_file => "src/js/media/jquery.tosrus.youtube.min.js"
 end
 
 # Concatenate all minified js files into one
-guard :concat, type: "js", files: %w(jquery.tosrus.min addons/jquery.tosrus.buttons.min addons/jquery.tosrus.caption.min addons/jquery.tosrus.drag.min addons/jquery.tosrus.keys.min addons/jquery.tosrus.pagination.min media/jquery.tosrus.html.min media/jquery.tosrus.image.min media/jquery.tosrus.vimeo.min media/jquery.tosrus.youtube.min), input_dir: "src/js", output: "src/js/jquery.tosrus.min.all"
+guard :concat, type: "js", files: %w(jquery.tosrus.min addons/jquery.tosrus.autoplay.min addons/jquery.tosrus.buttons.min addons/jquery.tosrus.caption.min addons/jquery.tosrus.drag.min addons/jquery.tosrus.keys.min addons/jquery.tosrus.pagination.min media/jquery.tosrus.html.min media/jquery.tosrus.image.min media/jquery.tosrus.vimeo.min media/jquery.tosrus.youtube.min), input_dir: "src/js", output: "src/js/jquery.tosrus.min.all"

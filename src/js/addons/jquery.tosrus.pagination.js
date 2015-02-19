@@ -33,22 +33,6 @@
 			pagr = this.opts[ _ADDON_ ];
 
 
-		//	DEPRECATED
-		if ( typeof pagr == 'boolean' )
-		{
-			$[ _PLUGIN_ ].deprecated( 'A boolean for the option "pagination"', 'the option "pagination.add"' );
-		}
-		if ( typeof pagr == 'string' )
-		{
-			$[ _PLUGIN_ ].deprecated( 'A string for the option "pagination"', 'the option "pagination.target"' );
-		}
-		if ( pagr instanceof $ )
-		{
-			$[ _PLUGIN_ ].deprecated( 'A jQuery object for the option "pagination"', 'the option "pagination.target"' );
-		}
-		//	/DEPRECATED
-
-
 		if ( this.nodes.$slides.length < 2 )
 		{
 			pagr.add = false;
@@ -78,18 +62,21 @@
 				switch( pagr.type )
 				{
 					case 'thumbnails':
+						var pre 	= '<a href="#" style="background-image: url(',
+							post	= ');"></a>';
+
 						if ( this.vars.fixed )
 						{
 							pagr.anchorBuilder = function( index )
 							{
-								return '<a href="#" style="background-image: url(' + $(this).data( _d.anchor ).attr( 'href' ) + ');"></a>';
+								return pre + $(this).data( _d.anchor ).attr( 'href' ) + post;
 							};
 						}
 						else
 						{
 							pagr.anchorBuilder = function( index )
 							{
-								return '<a href="#" style="background-image: url(' + $(this).find( 'img' ).attr( 'src' ) + ');"></a>';
+								return pre + $(this).find( 'img' ).attr( 'src' ) + post;
 							};
 						}
 						break;

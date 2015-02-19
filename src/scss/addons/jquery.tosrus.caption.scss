@@ -17,7 +17,7 @@
 		line-height: $captLineHeight * $scale;
 		font-size: $captFontSize * $scale;
 		text-shadow: 0 ( 1px * $scale ) ( 2px * $scale ) rgba( 0, 0, 0, 0.8 );
-		bottom: $padding;
+		height: ( $captLineHeight * $scale ) + $padding;
 	}
 	&.tos-has-caption .tos-uibg
 	{
@@ -45,6 +45,7 @@
 	width: 100%;
 	position: absolute;
 	left: 0;
+	bottom: 0;
 	z-index: 1;
 
 	&:after
@@ -55,9 +56,15 @@
 	}
 	> div
 	{
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		width: 100%;
+
 		box-sizing: border-box;
 		padding: 0 $uiPadding;
 		float: left;
+
 		&:last-child
 		{
 			float: right;

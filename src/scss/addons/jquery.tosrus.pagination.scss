@@ -27,14 +27,22 @@ $thumbnailMargin: $thumbnailSize / 10;
 	//	Sizing
 	.tos-pagination
 	{
-		padding: 0 0 $padding 0;
+		
+		&:before,
+		&:after
+		{
+			content: '';
+			display: inline-block;
+			width: $padding;
+			height: $bSize;
+		}
 	}
 
 	&.tos-has-bullets
 	{
 		.tos-pagination
 		{
-			height: $bSize;
+			height: $bSize + $padding;
 			a
 			{
 				border-radius: $bSize;
@@ -45,7 +53,7 @@ $thumbnailMargin: $thumbnailSize / 10;
 		}
 		.tos-caption
 		{
-			bottom: $bSize + $padding + ( $padding / 2 );
+			bottom: $bSize + $padding;
 		}
 		.tos-uibg
 		{
@@ -61,7 +69,7 @@ $thumbnailMargin: $thumbnailSize / 10;
 	{
 		.tos-pagination
 		{
-			height: $tSize;
+			height: $tSize + $padding;
 			a
 			{
 				background-position: center center;
@@ -73,7 +81,7 @@ $thumbnailMargin: $thumbnailSize / 10;
 		}
 		.tos-caption
 		{
-			bottom: $tSize + $padding + ( $padding / 2 );
+			bottom: $tSize + $padding;
 		}
 		.tos-uibg
 		{
@@ -109,6 +117,10 @@ $thumbnailMargin: $thumbnailSize / 10;
 .tos-pagination
 {
 	text-align: center;
+	white-space: nowrap;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
 	
 	opacity: 0;
 	@include vendor-prefix-property( 'transition', opacity $transitionDuration $transitionFunction );
