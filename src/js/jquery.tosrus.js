@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.4.0
+ *	jQuery Touch Optimized Sliders "R"Us 2.4.1
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -17,7 +17,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.4.0';
+		_VERSION_	= '2.4.1';
 
 
 	//	Plugin already excists
@@ -170,7 +170,7 @@
 			//	Prevent closing when clicking on UI elements
 			if ( this.opts.wrapper.onClick == 'close' )
 			{
-				this.nodes.$uibg
+				this.nodes.$uibg || $()
 					.add( this.nodes.$capt || $() )
 					.add( this.nodes.$pagr || $() )
 					.on( _e.click,
