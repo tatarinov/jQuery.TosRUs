@@ -1,13 +1,13 @@
 {
-  "name": "jQuery.TosRUs",
-  "main": "src/js/jquery.tosrus.min.all.js",
-  "version": "2.4.2",
-  "homepage": "http://tosrus.frebsite.nl/",
-  "authors": [
+  "name"      : "jQuery.TosRUs",
+  "main"      : "src/js/jquery.tosrus.all.min.umd.js",
+  "version"   : "2.5.0",
+  "homepage"  : "http://tosrus.frebsite.nl/",
+  "authors"   : [
     "Fred Heusschen <info@frebsite.nl>"
   ],
   "description": "The one-stop-shop jQuery plugin for scrolling/swiping through all different kinds of content. On a desktop, tablet or smartphone, inside a HTML element or as a lightbox popup.",
-  "keywords": [
+  "keywords"  : [
     "slider",
     "lightbox",
     "popup",
@@ -15,13 +15,6 @@
     "touch",
     "drag",
     "swipe"
-  ],
-  "ignore": [
-    ".jshintrc",
-    "Guardfile",
-    "index.html",
-    "*.json",
-    "README.md"
   ],
   "dependencies": {
     "jquery": ">= 1.7.0"

@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.4.2
+ *	jQuery Touch Optimized Sliders "R"Us 2.5.0
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -17,7 +17,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.4.2';
+		_VERSION_	= '2.5.0';
 
 
 	//	Plugin already excists
@@ -827,28 +827,31 @@
 				return parseInt( value.slice( 0, -1 ) );
 			},
 			resizeRatio: function( $i, $o, maxWidth, maxHeight, ratio )
-			{		
-				var _w = $o.width(),
-					_h = $o.height();
-		
-				if ( maxWidth && _w > maxWidth )
+			{
+				if ( $o.is( ':visible' ) )
 				{
-					_w = maxWidth;
+					var _w = $o.width(),
+						_h = $o.height();
+			
+					if ( maxWidth && _w > maxWidth )
+					{
+						_w = maxWidth;
+					}
+					if ( maxHeight && _h > maxHeight )
+					{
+						_h = maxHeight;
+					}
+			
+					if ( _w / _h < ratio )
+					{
+						_h = _w / ratio;
+					}
+					else
+					{
+						_w = _h * ratio;
+					}
+					$i.width( _w ).height( _h );	
 				}
-				if ( maxHeight && _h > maxHeight )
-				{
-					_h = maxHeight;
-				}
-		
-				if ( _w / _h < ratio )
-				{
-					_h = _w / ratio;
-				}
-				else
-				{
-					_w = _h * ratio;
-				}
-				$i.width( _w ).height( _h );
 			},
 			transitionend: function( $e, fn, duration )
 	        {

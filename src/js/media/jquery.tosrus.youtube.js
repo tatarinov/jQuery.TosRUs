@@ -117,6 +117,12 @@
 					commandVideo( 'pause' );
 				}
 			)
+			.on( _e.opening,
+			    function( e )
+			    {
+			        _f.resizeRatio( $v, $s, maxWidth, maxHeight, ratio );
+			    }
+			)
 			.on( _e.closing,
 				function( e )
 				{
