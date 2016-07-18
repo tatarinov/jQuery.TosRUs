@@ -100,7 +100,8 @@
 				.on( _e.click,
 					function( e )
 					{
-						e.stopPropagation();
+						if( that.opts.wrapper.onClick != null )
+							e.stopPropagation();
 
 						switch ( that.opts.wrapper.onClick )
 						{
