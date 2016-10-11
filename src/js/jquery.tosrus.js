@@ -817,11 +817,14 @@
 			},
 			isPercentage: function( value )
 			{
-				return ( typeof value == 'string' && value.slice( -1 ) == '%' );
+				if ( typeof value === 'string' && value.slice( -1 ) === '%' )
 				{
-					value = parseInt( value.slice( 0, -1 ) );
+					return !isNaN( parseInt( value.slice( 0, -1 ) ) );
 				}
-				return !isNaN( value );
+				else
+				{
+					return false;
+				}
 			},
 			getPercentage: function( value )
 			{
